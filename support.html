@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>고객지원 | 아이에스에이연구원</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--primary:#1d3158;--primary-dark:#142340;--primary-light:#5d76a8;--secondary:#5d76a8;--light-bg:#F5F8FF;--border:#E0E8F8;--text:#222222;--footer-bg:#0f1b33;--nav-height:90px;--accent-orange:#F59E0B;--accent-orange-dark:#D97706;--accent-teal:#5d76a8;--page-accent:#5d76a8;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;color:var(--text);line-height:1.7;background:#fff;font-size:16px;word-break:keep-all;padding-bottom:58px;}
+a{color:inherit;text-decoration:none;}img{max-width:100%;display:block;}ul{list-style:none;}button{font-family:inherit;}
+header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,0.98);box-shadow:0 1px 0 rgba(0,0,0,0.08),0 4px 20px rgba(0,0,0,0.06);backdrop-filter:blur(12px);}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:0 36px;height:var(--nav-height);max-width:1500px;margin:0 auto;}
+.logo{display:flex;align-items:center;}.logo-img-wrap{display:flex;align-items:center;gap:8px;}
+.logo-svg{height:58px;width:auto;object-fit:contain;}.logo-kolas{height:52px;width:auto;object-fit:contain;}
+.logo-divider{width:1px;height:44px;background:#d0d8e8;margin:0 6px;}
+.nav-wrap{display:flex;align-items:center;gap:16px;}.nav-menu{display:flex;}.nav-item{position:relative;}
+.nav-link{display:flex;align-items:center;height:var(--nav-height);padding:0 18px;font-size:17px;font-weight:600;color:#222;white-space:nowrap;transition:color 0.2s;cursor:pointer;}
+.nav-link:hover,.nav-item:hover>.nav-link{color:var(--primary);}
+.nav-link.highlight{color:#fff;background:var(--primary);border-radius:6px;height:38px;margin:auto 0;padding:0 16px;font-size:14px;}
+.nav-link.highlight:hover{background:var(--primary-dark);}
+.dropdown{position:absolute;top:var(--nav-height);left:0;min-width:190px;background:#fff;border-top:3px solid var(--primary);box-shadow:0 8px 32px rgba(0,0,0,0.12);border-radius:0 0 8px 8px;opacity:0;visibility:hidden;transform:translateY(-8px);transition:all 0.2s;z-index:200;}
+.nav-item:hover .dropdown{opacity:1;visibility:visible;transform:translateY(0);}
+.dropdown a{display:block;padding:12px 22px;font-size:14px;color:#444;border-bottom:1px solid #f5f5f5;transition:all 0.15s;}
+.dropdown a:last-child{border-bottom:none;}.dropdown a:hover{background:var(--light-bg);color:var(--primary);padding-left:26px;}
+.auth-btns{display:flex;align-items:center;gap:6px;}
+.btn-auth{padding:6px 14px;font-size:13px;border-radius:4px;font-weight:500;border:1px solid #D0D9EB;color:#555;transition:all 0.2s;}
+.btn-auth:hover{border-color:var(--primary);color:var(--primary);}
+.btn-auth.login{background:var(--primary);color:#fff;border-color:var(--primary);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;border:none;background:none;}
+.hamburger span{display:block;width:24px;height:2px;background:#333;transition:all 0.3s;border-radius:2px;}
+.page-hero{margin-top:var(--nav-height);height:200px;background:linear-gradient(135deg,#142340 0%,#1d3158 50%,#5d76a8 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.page-hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/svg%3E") repeat;}
+.page-hero-content{text-align:center;color:#fff;position:relative;z-index:1;}
+.page-hero h1{font-size:30px;font-weight:700;margin-bottom:10px;}
+.breadcrumb{font-size:13px;opacity:0.75;display:flex;align-items:center;justify-content:center;gap:6px;}
+.breadcrumb .sep{opacity:0.5;}
+.sub-nav{background:#fff;border-bottom:2px solid var(--border);position:sticky;top:var(--nav-height);z-index:99;}
+.sub-nav-inner{max-width:1200px;margin:0 auto;display:flex;overflow-x:auto;}
+.sub-nav a{display:block;padding:14px 26px;font-size:15px;font-weight:600;color:#666;border-bottom:3px solid transparent;transition:all 0.2s;white-space:nowrap;letter-spacing:0;}
+.sub-nav a:hover,.sub-nav a.active{font-size:15px;font-weight:600;color:var(--page-accent);border-bottom-color:var(--page-accent);}
+.content-wrap{max-width:1100px;margin:0 auto;padding:60px 24px;}
+.content-section{margin-bottom:60px;}
+.content-section[id]{scroll-margin-top:160px;}
+.section-heading{font-size:20px;font-weight:700;color:var(--primary);margin-bottom:24px;padding-bottom:12px;border-bottom:2px solid var(--border);display:flex;align-items:center;gap:10px;}
+.section-heading::before{content:'';display:block;width:4px;height:20px;background:var(--page-accent);border-radius:2px;flex-shrink:0;}
+.notice-box{background:#FFF8E1;border:1px solid #FFC107;border-left:4px solid #FFC107;border-radius:6px;padding:14px 18px;font-size:14px;color:#5D4037;margin-bottom:24px;line-height:1.7;}
+.highlight-box{background:var(--light-bg);border-left:4px solid var(--primary);border-radius:0 8px 8px 0;padding:16px 20px;font-size:14px;color:#333;line-height:1.8;margin:20px 0;}
+/* 파일 다운로드 */
+.file-list{list-style:none;}
+.file-item{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border:1px solid var(--border);border-radius:10px;margin-bottom:10px;transition:border-color 0.2s;background:#fff;}
+.file-item:hover{border-color:var(--primary);box-shadow:0 2px 10px rgba(21,101,192,0.1);}
+.file-info{display:flex;align-items:center;gap:14px;}
+.file-icon{width:44px;height:44px;background:var(--light-bg);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--primary);flex-shrink:0;border:1px solid var(--border);}
+.file-name{font-size:15px;color:#222;font-weight:600;}
+.file-meta{font-size:13px;color:#999;margin-top:2px;}
+.btn-download{padding:8px 18px;background:var(--primary);color:#fff;border-radius:6px;font-size:13px;font-weight:600;transition:background 0.2s;white-space:nowrap;display:inline-flex;align-items:center;gap:5px;}
+.btn-download:hover{background:var(--primary-dark);}
+/* FAQ */
+.faq-item{border:1px solid var(--border);border-radius:10px;margin-bottom:10px;overflow:hidden;}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;font-size:15px;font-weight:500;cursor:pointer;background:#F9FAFD;transition:background 0.2s;gap:12px;border:none;width:100%;text-align:left;}
+.faq-q:hover{background:#E3F2FD;}
+.faq-q.active{background:var(--primary);color:#fff;}
+.faq-q-prefix{font-size:16px;font-weight:800;color:var(--primary);flex-shrink:0;min-width:20px;}
+.faq-q.active .faq-q-prefix{color:rgba(255,255,255,0.7);}
+.faq-q-text{flex:1;}
+.faq-arrow{transition:transform 0.3s;font-size:14px;opacity:0.6;}
+.faq-q.active .faq-arrow{transform:rotate(180deg);}
+.faq-a{padding:0;max-height:0;overflow:hidden;transition:all 0.3s;font-size:14px;color:#555;line-height:1.8;border-top:0;}
+.faq-a.open{padding:18px 20px;max-height:800px;border-top:1px solid var(--border);}
+/* 문의하기 */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:24px 0;}
+.contact-card{background:#fff;border:2px solid var(--border);border-radius:14px;padding:32px;text-align:center;transition:all 0.2s;}
+.contact-card:hover{border-color:var(--primary);box-shadow:0 4px 20px rgba(21,101,192,0.12);}
+.contact-icon{font-size:48px;margin-bottom:16px;}
+.contact-card h3{font-size:18px;font-weight:700;color:var(--primary);margin-bottom:10px;}
+.contact-card p{font-size:14px;color:#666;line-height:1.7;margin-bottom:16px;}
+.contact-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:var(--primary);color:#fff;border-radius:50px;font-size:14px;font-weight:700;transition:all 0.2s;}
+.contact-btn:hover{background:var(--primary-dark);transform:translateY(-2px);}
+.contact-btn.kakao{background:#FEE500;color:#3C1E1E;}
+.contact-btn.kakao:hover{background:#FFD700;}
+/* 사이드바 */
+.sidebar-right{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:500;display:flex;flex-direction:column;gap:0;border-radius:12px 0 0 12px;overflow:hidden;box-shadow:-4px 0 20px rgba(0,0,0,0.12);}
+.sb-btn{width:64px;padding:11px 5px;background:var(--primary);color:#fff;text-align:center;font-size:11px;font-weight:600;line-height:1.3;cursor:pointer;transition:filter 0.2s,transform 0.15s;display:flex;flex-direction:column;align-items:center;gap:4px;border:none;}
+.sb-btn:hover{filter:brightness(1.2);transform:translateX(-3px);}
+.sb-btn svg{width:20px;height:20px;fill:currentColor;}
+.sb-btn.c-green{background:#5d76a8;}.sb-btn.c-red{background:#1d3158;}.sb-btn.c-purple{background:#5d76a8;}
+.sb-btn.c-kakao{background:#FEE500;color:#3C1E1E;}.sb-btn.c-naver{background:#03C75A;}
+.sb-btn.c-blog{background:#00C73C;}.sb-btn.c-insta{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);}
+.cta-ribbon{position:fixed;bottom:0;left:0;right:0;z-index:600;background:linear-gradient(90deg,var(--primary-dark) 0%,var(--primary-light) 100%);padding:12px 24px;display:flex;align-items:center;justify-content:center;gap:20px;box-shadow:0 -4px 20px rgba(0,0,0,0.15);}
+.cta-ribbon-text{color:#fff;font-size:15px;font-weight:600;}
+.cta-ribbon-text span{opacity:0.8;font-weight:400;margin-left:8px;font-size:14px;}
+.cta-ribbon-btn{padding:9px 24px;border-radius:50px;font-size:14px;font-weight:700;transition:all 0.2s;white-space:nowrap;}
+.cta-ribbon-btn.solid{background:var(--accent-orange);color:#fff;}
+.cta-ribbon-btn.outline{border:2px solid rgba(255,255,255,0.7);color:#fff;}
+.cta-ribbon-close{position:absolute;right:20px;background:none;border:none;color:rgba(255,255,255,0.6);font-size:20px;cursor:pointer;padding:4px 8px;}
+#scrollTop{position:fixed;bottom:70px;left:30px;z-index:500;width:44px;height:44px;background:var(--primary);color:#fff;border-radius:50%;border:none;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,0.15);}
+footer{background:#142340;color:rgba(255,255,255,0.65);padding:50px 24px 28px;}
+.footer-inner{max-width:1260px;margin:0 auto;}
+.footer-top{display:flex;gap:60px;padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,0.1);margin-bottom:28px;}
+.footer-brand .fn{font-size:17px;font-weight:800;color:#fff;margin-bottom:4px;}
+.footer-brand .fen{font-size:12px;opacity:0.5;margin-bottom:16px;}
+.footer-links{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:14px;}
+.footer-links a{font-size:13px;color:rgba(255,255,255,0.55);transition:color 0.2s;}
+.footer-links a:hover{color:#fff;}
+.footer-info{display:flex;flex-wrap:wrap;gap:6px 20px;font-size:13px;}
+.footer-info .fi{display:flex;gap:6px;align-items:center;}
+.footer-info .fi span{color:rgba(255,255,255,0.35);}
+.footer-bottom{text-align:center;font-size:12px;opacity:0.35;margin-top:10px;}
+.footer-social{display:flex;gap:10px;margin-top:16px;}
+.footer-social a{width:34px;height:34px;background:rgba(255,255,255,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background 0.2s;}
+.footer-social a:hover{background:rgba(255,255,255,0.25);}
+.footer-social svg{width:16px;height:16px;fill:rgba(255,255,255,0.7);}
+@media(max-width:768px){
+  :root{--nav-height:64px;}
+  .header-inner{padding:0 16px;}.hamburger{display:flex;}
+  .nav-wrap{position:fixed;top:64px;left:-100%;width:82%;max-width:320px;height:calc(100vh - 64px);background:#fff;flex-direction:column;align-items:stretch;overflow-y:auto;transition:left 0.3s;box-shadow:4px 0 20px rgba(0,0,0,0.1);z-index:999;gap:0;}
+  .nav-wrap.open{left:0;}.nav-menu{flex-direction:column;}
+  .nav-link{height:auto;padding:16px 20px;border-bottom:1px solid #f0f0f0;}
+  .dropdown{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border-top:none;border-left:4px solid var(--primary);display:none;border-radius:0;}
+  .nav-item.open .dropdown{display:block;}.auth-btns{display:none;}
+  .contact-grid{grid-template-columns:1fr;}
+  .sidebar-right{display:none;}.footer-top{flex-direction:column;gap:24px;}
+  .content-wrap{padding:40px 16px;}.page-hero h1{font-size:24px;}
+  body{padding-bottom:80px;}
+}
+
+.btn-download.pending,.btn-dl.pending{background:#94A3B8 !important;cursor:help;position:relative;}
+.btn-download.pending:hover,.btn-dl.pending:hover{background:#64748B !important;}
+.btn-download.pending::after,.btn-dl.pending::after{content:' (준비중)';font-size:11px;opacity:0.85;}
+.file-item .btn-download.pending::after,.archive-card .btn-dl.pending::after{content:'';}
+.file-item:has(.pending) .file-name::after,.archive-card:has(.pending) .archive-title::after{content:' (준비중)';color:#94A3B8;font-size:12px;font-weight:500;}
+</style>
+</head>
+<body>
+
+<header><div class="header-inner">
+  <a href="index.html" class="logo"><div class="logo-img-wrap">
+    <img src="images/main_1.jpg" alt="ISA연구원" class="logo-svg">
+    <div class="logo-divider"></div>
+    <img src="images/main_2.jpg" alt="KOLAS" class="logo-kolas">
+  </div></a>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  <div class="nav-wrap" id="navWrap">
+    <nav><ul class="nav-menu">
+      <li class="nav-item"><a class="nav-link" href="#">연구원소개</a>
+        <div class="dropdown">
+          <a href="greeting.html">인사말</a><a href="history.html">연혁</a>
+          <a href="organization.html">조직도</a><a href="certification.html">지정·인정현황</a>
+          <a href="location.html">오시는길</a>
+        </div></li>
+      <li class="nav-item"><a class="nav-link" href="#">검사분야</a>
+        <div class="dropdown">
+          <a href="food.html">식품 자가품질검사</a><a href="livestock.html">축산물 자가품질검사</a>
+          <a href="health-food.html">건강기능식품</a>
+          <a href="nutrition.html">영양성분 검사</a><a href="microbiology.html">미생물 검사</a>
+          <a href="chemistry.html">이화학 검사</a><a href="haccp.html">HACCP 유효성검사</a><a href="shelf-life.html">소비기한 설정시험</a>
+          <a href="allergen.html">알레르기·할랄·비건</a><a href="air-quality.html">대기측정 대행</a>
+        </div></li>
+      <li class="nav-item"><a class="nav-link" href="inquiry.html">검사의뢰</a>
+        <div class="dropdown">
+          <a href="inquiry.html#procedure">검사 진행 절차</a>
+          <a href="inquiry.html#documents">검사에 필요한 서류 안내</a>
+        </div></li>
+      <li class="nav-item"><a class="nav-link" href="support.html">고객지원</a>
+        <div class="dropdown">
+          <a href="support.html#download">양식다운로드</a>
+          <a href="support.html#faq">자주하는질문</a>
+          <a href="support.html#contact">문의하기</a>
+        </div></li>
+      <li class="nav-item"><a class="nav-link" href="notice.html">알림마당</a>
+        <div class="dropdown">
+          <a href="notice.html#announcements">공지사항</a>
+          <a href="notice.html#regulations">관련 법규</a>
+          <a href="notice.html#archive">자료실</a>
+        </div></li>
+      <li class="nav-item"><a class="nav-link" href="quote.html">견적·상담</a>
+        <div class="dropdown">
+          <a href="quote.html#consult">온라인 상담 신청</a>
+          <a href="quote.html#quote-form">견적 요청</a>
+        </div></li>
+    </ul></nav>
+    <div class="auth-btns">
+      <a href="#" class="btn-auth login">로그인</a>
+      <a href="#" class="btn-auth">회원가입</a>
+      <a href="#" class="btn-auth">인트라넷</a>
+    </div>
+  </div>
+</div></header>
+
+<div class="sidebar-right">
+  <a href="quote.html" class="sb-btn" style="background:#F59E0B"><svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>실시간<br>견적</a>
+  <a href="http://pf.kakao.com/_wLxhxnb" target="_blank" class="sb-btn" style="background:#5d76a8"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>상담<br>요청</a>
+  <a href="support.html#download" class="sb-btn c-green"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>양식<br>다운</a>
+  <a href="notice.html" class="sb-btn c-purple"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>공지<br>사항</a>
+  <a href="https://www.youtube.com/@ISALABB" target="_blank" class="sb-btn c-red"><svg viewBox="0 0 24 24"><path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z"/></svg>유튜브</a>
+  <a href="https://blog.naver.com/isalab" target="_blank" class="sb-btn c-blog"><svg viewBox="0 0 24 24"><path d="M16 8.414l-4.5-6.414H4v16h4V9.586l4.5 6.414H20V2h-4z"/></svg>블로그</a>
+  <a href="https://www.instagram.com/isalab_kr" target="_blank" class="sb-btn c-insta"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>인스타</a>
+  <a href="http://pf.kakao.com/_wLxhxnb" target="_blank" class="sb-btn c-kakao"><svg viewBox="0 0 24 24"><path d="M12 3C6.48 3 2 6.48 2 10.8c0 2.73 1.65 5.13 4.13 6.54L5 21l4.35-2.4c.85.22 1.73.4 2.65.4 5.52 0 10-3.48 10-7.8S17.52 3 12 3z"/></svg>카카오</a>
+  <a href="https://cafe.naver.com/isalabb" target="_blank" class="sb-btn c-naver"><svg viewBox="0 0 24 24"><path d="M16 8.414l-4.5-6.414H4v16h4V9.586l4.5 6.414H20V2h-4z"/></svg>카페</a>
+</div>
+
+<div class="page-hero"><div class="page-hero-content">
+  <h1>고객지원</h1>
+  <div class="breadcrumb"><a href="index.html">홈</a><span class="sep">›</span>고객지원</div>
+</div></div>
+
+<nav class="sub-nav"><div class="sub-nav-inner">
+  <a href="#download" class="active">양식 다운로드</a>
+  <a href="#faq">자주하는 질문</a>
+  <a href="#contact">문의하기</a>
+</div></nav>
+
+<div class="content-wrap">
+
+  <!-- 양식 다운로드 -->
+  <div class="content-section" id="download">
+    <h2 class="section-heading">양식 다운로드</h2>
+    <div class="notice-box">아래 양식을 다운로드하여 작성 후 이메일(isalab@naver.com) 또는 방문 시 제출해 주세요.</div>
+
+    <h3 style="font-size:16px;font-weight:700;color:#333;margin:24px 0 12px;padding-left:4px;">📋 검사 의뢰 양식</h3>
+    <ul class="file-list">
+      <li class="file-item">
+        <div class="file-info">
+          <div class="file-icon">HWP</div>
+          <div><div class="file-name">검사 의뢰서 (한글)</div><div class="file-meta">자가품질검사, 영양성분 등 모든 검사 의뢰 시 사용</div></div>
+        </div>
+        <a href="files/의뢰서.hwp" download class="btn-download"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg> 다운로드</a>
+      </li>
+      <li class="file-item">
+        <div class="file-info">
+          <div class="file-icon">XLS</div>
+          <div><div class="file-name">검사 의뢰서 (엑셀)</div><div class="file-meta">엑셀 버전 — 여러 품목 일괄 작성 시 편리</div></div>
+        </div>
+        <a href="files/의뢰서.xlsx" download class="btn-download"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg> 다운로드</a>
+      </li>
+      <li class="file-item">
+        <div class="file-info">
+          <div class="file-icon">HWP</div>
+          <div><div class="file-name">영문 성적서 신청 양식</div><div class="file-meta">영문 성적서 발급 요청 시 작성</div></div>
+        </div>
+        <a href="files/영문성적서신청.hwp" download class="btn-download"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg> 다운로드</a>
+      </li>
+      <li class="file-item">
+        <div class="file-info">
+          <div class="file-icon">HWP</div>
+          <div><div class="file-name">성적서 수정/재발행 신청 양식</div><div class="file-meta">발급된 성적서 수정 또는 재발행 요청 시</div></div>
+        </div>
+        <a href="files/성적서수정재발행.hwpx" download class="btn-download"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg> 다운로드</a>
+      </li>
+      <li class="file-item">
+        <div class="file-info">
+          <div class="file-icon">HWP</div>
+          <div><div class="file-name">소비기한 설정 견적 — 제품 특성 양식</div><div class="file-meta">소비기한 설정시험 견적 요청 시 제품 정보 기입</div></div>
+        </div>
+        <a href="files/소비기한견적양식.hwp" download class="btn-download"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg> 다운로드</a>
+      </li>
+    </ul>
+
+    <h3 style="font-size:16px;font-weight:700;color:#333;margin:32px 0 12px;padding-left:4px;">🏢 회사 서류</h3>
+    <ul class="file-list">
+      <li class="file-item">
+        <div class="file-info">
+          <div class="file-icon">PDF</div>
+          <div><div class="file-name">통장 사본</div><div class="file-meta">세금계산서 및 환불 처리용</div></div>
+        </div>
+        <a href="files/통장사본.pdf" download class="btn-download"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg> 다운로드</a>
+      </li>
+      <li class="file-item">
+        <div class="file-info">
+          <div class="file-icon">PDF</div>
+          <div><div class="file-name">사업자등록증</div><div class="file-meta">거래처 등록 요청 시 제출용</div></div>
+        </div>
+        <a href="files/사업자등록증.pdf" download class="btn-download"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg> 다운로드</a>
+      </li>
+      <li class="file-item">
+        <div class="file-info">
+          <div class="file-icon">PDF</div>
+          <div><div class="file-name">식품 시험·검사기관 지정서</div><div class="file-meta">식약처 지정 — 식품 등 시험·검사기관 제120호</div></div>
+        </div>
+        <a href="files/식품지정서.pdf" download data-pending="true" class="btn-download pending"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg> 다운로드</a>
+      </li>
+      <li class="file-item">
+        <div class="file-info">
+          <div class="file-icon">PDF</div>
+          <div><div class="file-name">축산물 시험·검사기관 지정서</div><div class="file-meta">식약처 지정 — 축산물 시험·검사기관 제54호</div></div>
+        </div>
+        <a href="files/축산물지정서.pdf" download data-pending="true" class="btn-download pending"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg> 다운로드</a>
+      </li>
+      <li class="file-item">
+        <div class="file-info">
+          <div class="file-icon">PDF</div>
+          <div><div class="file-name">KOLAS 공인시험기관 인정서</div><div class="file-meta">KOLAS 국제공인시험기관 인정번호 KT1316</div></div>
+        </div>
+        <a href="files/KOLAS인정서.pdf" download class="btn-download"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg> 다운로드</a>
+      </li>
+      <li class="file-item">
+        <div class="file-info">
+          <div class="file-icon">IMG</div>
+          <div><div class="file-name">대기측정대행업 등록증</div><div class="file-meta">경기도 등록 제68호</div></div>
+        </div>
+        <a href="files/대기_측정대행업 등록증.jpg" download class="btn-download"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg> 다운로드</a>
+      </li>
+    </ul>
+    <div class="notice-box">※ 파일이 업로드되지 않은 항목은 이메일(isalab@naver.com) 또는 전화(031-429-0620)로 요청해 주시면 발송해 드립니다.</div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="content-section" id="faq">
+    <h2 class="section-heading">자주하는 질문</h2>
+
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;">
+      <button class="faq-filter-btn active" onclick="filterFaq('all',this)" style="padding:6px 16px;border-radius:20px;border:1px solid var(--primary);background:var(--primary);color:#fff;font-size:13px;cursor:pointer;font-family:inherit;">전체</button>
+      <button class="faq-filter-btn" onclick="filterFaq('general',this)" style="padding:6px 16px;border-radius:20px;border:1px solid #ccc;background:#fff;color:#555;font-size:13px;cursor:pointer;font-family:inherit;">검사 일반</button>
+      <button class="faq-filter-btn" onclick="filterFaq('sample',this)" style="padding:6px 16px;border-radius:20px;border:1px solid #ccc;background:#fff;color:#555;font-size:13px;cursor:pointer;font-family:inherit;">시료 접수</button>
+      <button class="faq-filter-btn" onclick="filterFaq('result',this)" style="padding:6px 16px;border-radius:20px;border:1px solid #ccc;background:#fff;color:#555;font-size:13px;cursor:pointer;font-family:inherit;">성적서·결과</button>
+      <button class="faq-filter-btn" onclick="filterFaq('payment',this)" style="padding:6px 16px;border-radius:20px;border:1px solid #ccc;background:#fff;color:#555;font-size:13px;cursor:pointer;font-family:inherit;">비용·결제</button>
+    </div>
+
+    <div id="faqList">
+      <div class="faq-item" data-cat="general">
+        <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-prefix">Q</span><span class="faq-q-text">자가품질검사를 반드시 해야 하나요?</span><span class="faq-arrow">▼</span></button>
+        <div class="faq-a">식품위생법 제31조에 따라 식품 등을 제조·가공하는 영업자는 자가품질검사 의무가 있습니다. 위반 시 영업정지 등 행정처분을 받을 수 있으므로 반드시 이행해야 합니다. 즉석판매제조가공업자도 해당 유형에 따라 검사 의무가 있습니다.</div>
+      </div>
+      <div class="faq-item" data-cat="general">
+        <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-prefix">Q</span><span class="faq-q-text">검사 기간(소요 일수)은 얼마나 되나요?</span><span class="faq-arrow">▼</span></button>
+        <div class="faq-a">검사 항목에 따라 다르며, 일반적으로 다음과 같습니다.<br>• 미생물 검사: 접수 후 약 5~7 영업일<br>• 이화학 검사: 접수 후 약 5~10 영업일<br>• 영양성분 검사: 접수 후 약 10~15 영업일<br>• 소비기한 설정시험: 품목에 따라 수 주 ~ 수 개월<br>긴급 처리가 필요한 경우 사전 문의 주시면 별도 안내드립니다.</div>
+      </div>
+      <div class="faq-item" data-cat="general">
+        <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-prefix">Q</span><span class="faq-q-text">검사 의뢰는 어떻게 하나요?</span><span class="faq-arrow">▼</span></button>
+        <div class="faq-a">① 전화(031-429-0620) 또는 카카오톡 채널로 검사 항목 상담 → ② 의뢰서 작성 및 시료 준비 → ③ 시료 방문 접수 또는 택배 발송(경기도 의왕시 한밭들길 12) → ④ 검사 수행 후 성적서 발급 순서로 진행됩니다.</div>
+      </div>
+      <div class="faq-item" data-cat="sample">
+        <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-prefix">Q</span><span class="faq-q-text">시료는 어떻게 준비해야 하나요?</span><span class="faq-arrow">▼</span></button>
+        <div class="faq-a">자가품질검사의 경우 한글 표시사항(제조일자 또는 소비기한 포함)이 부착된 최종 완제품으로 준비해 주세요.<br>• 미생물 검사만: 100g 이상 5개<br>• 미생물+이화학 검사: 100g 이상 6개<br>• 금속성 이물 항목 포함 시: 1kg 1개 추가<br>영양성분 검사는 배합비 기준으로 만든 제품 200g 이상 1개가 필요합니다.</div>
+      </div>
+      <div class="faq-item" data-cat="sample">
+        <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-prefix">Q</span><span class="faq-q-text">냉장·냉동 제품은 어떻게 보내야 하나요?</span><span class="faq-arrow">▼</span></button>
+        <div class="faq-a">냉장 제품은 아이스팩을, 냉동 제품은 드라이아이스를 넉넉히 동봉하여 발송해 주세요. 온도 유지 실패 시 미생물 검사 결과에 영향을 줄 수 있으며, 이 경우 재접수가 필요할 수 있습니다. 여름철에는 특히 주의해 주시기 바랍니다.</div>
+      </div>
+      <div class="faq-item" data-cat="sample">
+        <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-prefix">Q</span><span class="faq-q-text">시료를 직접 방문해서 접수할 수 있나요?</span><span class="faq-arrow">▼</span></button>
+        <div class="faq-a">네, 직접 방문 접수 가능합니다. 주소: 경기도 의왕시 한밭들길 12 (우편번호 16073). 운영시간: 평일 09:00~18:00 (점심 12:00~13:00, 주말·공휴일 휴무). 방문 전 전화로 사전 연락 주시면 더 원활하게 접수 도와드립니다.</div>
+      </div>
+      <div class="faq-item" data-cat="result">
+        <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-prefix">Q</span><span class="faq-q-text">성적서는 어떤 방식으로 받을 수 있나요?</span><span class="faq-arrow">▼</span></button>
+        <div class="faq-a">성적서는 이메일 발송(PDF)이 기본이며, 요청 시 우편 발송도 가능합니다. 영문 성적서가 필요한 경우 사전에 별도로 신청해 주세요(추가 비용 발생 가능). 성적서 재발행이 필요한 경우 수정/재발행 신청 양식을 작성하여 제출해 주세요.</div>
+      </div>
+      <div class="faq-item" data-cat="result">
+        <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-prefix">Q</span><span class="faq-q-text">검사 결과가 부적합으로 나왔습니다. 어떻게 해야 하나요?</span><span class="faq-arrow">▼</span></button>
+        <div class="faq-a">부적합 결과 수령 후 해당 제품의 출하를 즉시 중단하고, 원인 파악 후 개선 조치를 취하셔야 합니다. 필요 시 재검사를 의뢰할 수 있으며, 원인 분석에 대한 기술적 상담이 필요하시면 저희에게 문의해 주세요. 행정 처리 절차에 대해서는 관할 지자체에 확인하시기 바랍니다.</div>
+      </div>
+      <div class="faq-item" data-cat="payment">
+        <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-prefix">Q</span><span class="faq-q-text">검사 비용은 어떻게 되나요?</span><span class="faq-arrow">▼</span></button>
+        <div class="faq-a">검사 비용은 검사 항목과 제품 유형에 따라 다릅니다. 정확한 견적은 전화(031-429-0620), 카카오톡 채널, 또는 온라인 견적 신청을 통해 확인하실 수 있습니다. 여러 항목을 함께 의뢰하시면 비용 절감이 가능한 경우도 있으니 상담 주세요.</div>
+      </div>
+      <div class="faq-item" data-cat="payment">
+        <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-prefix">Q</span><span class="faq-q-text">결제는 언제 어떻게 하나요?</span><span class="faq-arrow">▼</span></button>
+        <div class="faq-a">접수 후 성적서 발급 전까지 입금을 요청드립니다. 계좌이체가 기본이며, 세금계산서는 전자세금계산서로 발행됩니다. 회사 고정 결제일이 있는 경우 입금일 지정이 가능하오니 사전에 연락 주세요.</div>
+      </div>
+      <div class="faq-item" data-cat="general">
+        <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-prefix">Q</span><span class="faq-q-text">KOLAS 공인 성적서와 일반 성적서의 차이는 무엇인가요?</span><span class="faq-arrow">▼</span></button>
+        <div class="faq-a">KOLAS(Korea Laboratory Accreditation Scheme) 공인 성적서는 국제공인시험기관(인정번호 KT1316)으로서 국제적으로 인정받는 성적서입니다. 수출용 제품이나 해외 바이어 요구 시, 또는 국내 공공기관 납품 시 KOLAS 공인 성적서가 필요할 수 있습니다. 일반 성적서는 자가품질검사 법적 의무 이행에 사용됩니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 문의하기 -->
+  <div class="content-section" id="contact">
+    <h2 class="section-heading">문의하기</h2>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-icon">💬</div>
+        <h3>카카오톡 채널 상담</h3>
+        <p>실시간 채팅으로 빠르게 상담받으세요.<br>운영시간: 평일 09:00~18:00</p>
+        <a href="http://pf.kakao.com/_wLxhxnb" target="_blank" class="contact-btn kakao">카카오톡 상담 시작</a>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">📞</div>
+        <h3>전화 문의</h3>
+        <p>대표전화: <strong>031-429-0620</strong><br>상담문의: <strong>070-8831-7376, 7366</strong></p>
+        <a href="tel:031-429-0620" class="contact-btn">전화 연결</a>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">✉️</div>
+        <h3>이메일 문의</h3>
+        <p>이메일로 문의사항을 보내주시면<br>빠르게 답변드리겠습니다.</p>
+        <a href="mailto:isalab@naver.com" class="contact-btn">이메일 보내기</a>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">📍</div>
+        <h3>방문 상담</h3>
+        <p>경기도 의왕시 한밭들길 12<br>평일 09:00~18:00 (사전 연락 권장)</p>
+        <a href="location.html" class="contact-btn">오시는 길 보기</a>
+      </div>
+    </div>
+    <div class="highlight-box">
+      📱 <strong>SNS 채널</strong> — 네이버 블로그, 인스타그램, 유튜브, 네이버 카페에서도 최신 정보와 유용한 검사 관련 콘텐츠를 확인하실 수 있습니다.
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="fn">㈜아이에스에이연구원</div>
+        <div class="fen">International Specialized Analysis Research Institute Co., Ltd.</div>
+        <div class="footer-links">
+          <a href="greeting.html">인사말</a><a href="organization.html">조직도</a><a href="history.html">연혁</a>
+          <a href="certification.html">지정·인정현황</a><a href="location.html">오시는길</a>
+          <a href="food.html">식품검사</a><a href="livestock.html">축산물검사</a>
+          <a href="nutrition.html">영양성분</a><a href="chemistry.html">이화학</a><a href="microbiology.html">미생물</a>
+        </div>
+        <div class="footer-social">
+          <a href="https://www.youtube.com/@ISALABB" target="_blank" title="유튜브"><svg viewBox="0 0 24 24"><path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z"/></svg></a>
+          <a href="https://www.instagram.com/isalab_kr" target="_blank" title="인스타그램"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+          <a href="http://pf.kakao.com/_wLxhxnb" target="_blank" title="카카오채널"><svg viewBox="0 0 24 24"><path d="M12 3C6.48 3 2 6.48 2 10.8c0 2.73 1.65 5.13 4.13 6.54L5 21l4.35-2.4c.85.22 1.73.4 2.65.4 5.52 0 10-3.48 10-7.8S17.52 3 12 3z"/></svg></a>
+          <a href="https://blog.naver.com/isalab" target="_blank" title="네이버블로그"><svg viewBox="0 0 24 24"><path d="M16 8.414l-4.5-6.414H4v16h4V9.586l4.5 6.414H20V2h-4z"/></svg></a>
+          <a href="https://cafe.naver.com/isalabb" target="_blank" title="네이버카페"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-info">
+          <div class="fi"><span>대표이사</span> 최영훈</div>
+          <div class="fi"><span>사업자등록번호</span> 350-88-01260</div>
+          <div class="fi"><span>주소</span> 경기도 의왕시 한밭들길 12 (우편번호 16073)</div>
+          <div class="fi"><span>대표전화</span> 031-429-0620</div>
+          <div class="fi"><span>상담문의</span> 070-8831-7376, 7366</div>
+          <div class="fi"><span>팩스</span> 031-427-0625</div>
+          <div class="fi"><span>이메일</span> <a href="mailto:isalab@naver.com" style="color:inherit">isalab@naver.com</a></div>
+          <div class="fi"><span>운영시간</span> 평일 09:00~18:00 / 점심 12:00~13:00 (주말·공휴일 휴무)</div>
+          <div class="fi"><span>식약처 지정</span> 식품 등 시험·검사기관 제120호 | 축산물 시험·검사기관 제54호</div>
+          <div class="fi"><span>KOLAS</span> 국제공인시험기관 인정번호 KT1316</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">Copyright &copy; 2026 ㈜아이에스에이연구원 All rights reserved.</div>
+  </div>
+</footer>
+
+<div class="cta-ribbon" id="ctaRibbon">
+  <div class="cta-ribbon-text">검사 의뢰 및 상담 문의<span>031-429-0620 / 070-8831-7376</span></div>
+  <div style="display:flex;gap:10px;">
+    <a href="quote.html" class="cta-ribbon-btn solid">실시간 견적 요청</a>
+    <a href="http://pf.kakao.com/_wLxhxnb" target="_blank" class="cta-ribbon-btn outline">카카오 상담</a>
+  </div>
+  <button class="cta-ribbon-close" onclick="document.getElementById('ctaRibbon').style.display='none'">×</button>
+</div>
+<button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><svg viewBox="0 0 24 24" width="20" height="20" fill="#fff"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg></button>
+
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  const hamburger=document.getElementById('hamburger');
+  const navWrap=document.getElementById('navWrap');
+  if(hamburger&&navWrap){
+    hamburger.addEventListener('click',function(){navWrap.classList.toggle('open');});
+    document.addEventListener('click',function(e){if(!hamburger.contains(e.target)&&!navWrap.contains(e.target))navWrap.classList.remove('open');});
+    document.querySelectorAll('.nav-link').forEach(function(link){
+      link.addEventListener('click',function(e){
+        if(window.innerWidth<=768){const item=link.parentElement;if(item.querySelector('.dropdown')){e.preventDefault();item.classList.toggle('open');}}
+      });
+    });
+  }
+  window.addEventListener('scroll',function(){
+    const btn=document.getElementById('scrollTop');
+    if(btn)btn.style.display=window.scrollY>300?'flex':'none';
+    const sections=document.querySelectorAll('.content-section[id]');
+    const navLinks=document.querySelectorAll('.sub-nav a');
+    let current='';
+    sections.forEach(function(s){if(window.scrollY>=s.offsetTop-160)current=s.id;});
+    navLinks.forEach(function(a){a.classList.remove('active');if(a.getAttribute('href')==='#'+current)a.classList.add('active');});
+  });
+});
+function toggleFaq(btn){
+  const a=btn.nextElementSibling;
+  const isOpen=a.classList.contains('open');
+  document.querySelectorAll('.faq-a.open').forEach(function(el){el.classList.remove('open');el.previousElementSibling.classList.remove('active');});
+  if(!isOpen){a.classList.add('open');btn.classList.add('active');}
+}
+function filterFaq(cat,btn){
+  document.querySelectorAll('.faq-filter-btn').forEach(function(b){
+    b.style.background='#fff';b.style.color='#555';b.style.borderColor='#ccc';
+  });
+  btn.style.background='var(--primary)';btn.style.color='#fff';btn.style.borderColor='var(--primary)';
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    item.style.display=(cat==='all'||item.dataset.cat===cat)?'block':'none';
+  });
+}
+
+/* 다운로드 파일 준비중 처리 */
+document.addEventListener('click',function(e){
+  const a=e.target.closest('a[data-pending]');
+  if(!a)return;
+  e.preventDefault();
+  alert('해당 파일은 준비중입니다.\n\n이메일(isalab@naver.com) 또는 전화(031-429-0620)로 요청해 주시면 발송해 드립니다.');
+});
+
+</script>
+</body>
+</html>

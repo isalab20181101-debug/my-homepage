@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>대기측정 대행 | 아이에스에이연구원</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--primary:#1d3158;--primary-dark:#142340;--primary-light:#5d76a8;--secondary:#5d76a8;--accent:#adb7cc;--white:#FFFFFF;--light-bg:#F5F8FF;--gray:#F0F2F5;--border:#E0E8F8;--text:#222222;--text-light:#555555;--footer-bg:#0f1b33;--nav-height:90px;--accent-orange:#F59E0B;--accent-orange-dark:#D97706;--accent-teal:#5d76a8;--page-accent:#5d76a8;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;color:var(--text);line-height:1.7;background:#fff;font-size:16px;word-break:keep-all;}
+a{color:inherit;text-decoration:none;}img{max-width:100%;display:block;}ul{list-style:none;}button{font-family:inherit;}
+header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,0.98);box-shadow:0 1px 0 rgba(0,0,0,0.08),0 4px 20px rgba(0,0,0,0.06);backdrop-filter:blur(12px);}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:0 36px;height:var(--nav-height);max-width:1500px;margin:0 auto;}
+.logo{display:flex;align-items:center;gap:10px;}.logo-img-wrap{display:flex;align-items:center;gap:8px;}
+.logo-svg{height:58px;width:auto;object-fit:contain;}.logo-kolas{height:52px;width:auto;object-fit:contain;}
+.logo-divider{width:1px;height:44px;background:#d0d8e8;margin:0 6px;}
+.nav-wrap{display:flex;align-items:center;gap:16px;}.nav-menu{display:flex;}.nav-item{position:relative;}
+.nav-link{display:flex;align-items:center;height:var(--nav-height);padding:0 18px;font-size:17px;font-weight:600;color:#222;white-space:nowrap;transition:color 0.2s;cursor:pointer;letter-spacing:0.1px;}
+.nav-link:hover,.nav-item:hover>.nav-link{color:var(--primary);}
+.nav-link.highlight{color:#fff;background:var(--primary);border-radius:6px;height:38px;margin:auto 0;padding:0 16px;font-size:14px;}
+.nav-link.highlight:hover{background:var(--primary-dark);}
+.dropdown{position:absolute;top:var(--nav-height);left:0;min-width:190px;background:#fff;border-top:3px solid var(--primary);box-shadow:0 8px 32px rgba(0,0,0,0.12);border-radius:0 0 8px 8px;opacity:0;visibility:hidden;transform:translateY(-8px);transition:all 0.2s;z-index:200;}
+.nav-item:hover .dropdown{opacity:1;visibility:visible;transform:translateY(0);}
+.dropdown a{display:block;padding:12px 22px;font-size:14px;color:#444;border-bottom:1px solid #f5f5f5;transition:all 0.15s;}
+.dropdown a:last-child{border-bottom:none;}.dropdown a:hover{background:var(--light-bg);color:var(--primary);padding-left:26px;}
+.auth-btns{display:flex;align-items:center;gap:6px;}
+.btn-auth{padding:6px 14px;font-size:13px;border-radius:4px;font-weight:500;border:1px solid #D0D9EB;color:#555;transition:all 0.2s;}
+.btn-auth:hover{border-color:var(--primary);color:var(--primary);}
+.btn-auth.login{background:var(--primary);color:#fff;border-color:var(--primary);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;border:none;background:none;}
+.hamburger span{display:block;width:24px;height:2px;background:#333;transition:all 0.3s;border-radius:2px;}
+.page-hero{margin-top:var(--nav-height);height:200px;background:linear-gradient(135deg,#142340 0%,#1d3158 50%,#5d76a8 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.page-hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/svg%3E") repeat;}
+.page-hero-content{text-align:center;color:#fff;position:relative;z-index:1;}
+.page-hero h1{font-size:30px;font-weight:700;margin-bottom:10px;}
+.breadcrumb{font-size:13px;opacity:0.75;display:flex;align-items:center;justify-content:center;gap:6px;}
+.breadcrumb .sep{opacity:0.5;}
+.sub-nav{background:#fff;border-bottom:2px solid var(--border);position:sticky;top:var(--nav-height);z-index:99;}
+.sub-nav-inner{max-width:1200px;margin:0 auto;display:flex;overflow-x:auto;}
+.sub-nav a{display:block;padding:14px 26px;font-size:15px;font-weight:600;color:#666;border-bottom:3px solid transparent;transition:all 0.2s;white-space:nowrap;letter-spacing:0;}
+.sub-nav a:hover,.sub-nav a.active{font-size:15px;font-weight:600;color:var(--page-accent);border-bottom-color:var(--page-accent);}
+.content-wrap{max-width:1100px;margin:0 auto;padding:60px 24px;}
+.content-section{margin-bottom:60px;}
+.content-section[id]{scroll-margin-top:160px;}
+.section-heading{font-size:20px;font-weight:700;color:var(--primary);margin-bottom:24px;padding-bottom:12px;border-bottom:2px solid var(--border);display:flex;align-items:center;gap:10px;}
+.section-heading::before{content:'';display:block;width:4px;height:20px;background:var(--page-accent);border-radius:2px;flex-shrink:0;}
+.notice-box{background:#FFF8E1;border:1px solid #FFC107;border-left:4px solid #FFC107;border-radius:6px;padding:14px 18px;font-size:14px;color:#5D4037;margin-bottom:24px;line-height:1.7;}
+.highlight-box{background:var(--light-bg);border-left:4px solid var(--primary);border-radius:0 8px 8px 0;padding:16px 20px;font-size:14px;color:#333;line-height:1.8;margin:20px 0;}
+/* 5단계 프로세스 */
+.process-flow{display:flex;align-items:stretch;flex-wrap:wrap;gap:0;margin:32px 0;}
+.process-step{flex:1;min-width:150px;background:#fff;border:2px solid var(--border);border-radius:12px;padding:28px 16px;text-align:center;position:relative;transition:all 0.2s;}
+.process-step:not(:last-child){margin-right:0;}
+.process-step:hover{border-color:var(--primary);box-shadow:0 4px 16px rgba(21,101,192,0.12);}
+.process-arrow{display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:22px;padding:0 4px;align-self:center;}
+.process-num{width:52px;height:52px;background:var(--primary);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;margin:0 auto 14px;}
+.process-title{font-size:15px;font-weight:700;color:#222;margin-bottom:6px;}
+.process-desc{font-size:13px;color:#777;line-height:1.6;}
+/* 서류 카드 */
+.doc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:20px 0;}
+.doc-card{background:var(--light-bg);border:1px solid var(--border);border-radius:10px;padding:20px 24px;display:flex;align-items:flex-start;gap:14px;}
+.doc-icon{width:44px;height:44px;background:var(--primary);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.doc-icon svg{width:22px;height:22px;fill:#fff;}
+.doc-card h4{font-size:15px;font-weight:700;color:#222;margin-bottom:4px;}
+.doc-card p{font-size:13px;color:#666;line-height:1.6;}
+/* 시료 준비 */
+.sample-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:20px 0;}
+.sample-card{background:#fff;border:2px solid var(--border);border-radius:12px;overflow:hidden;}
+.sample-head{background:var(--primary);color:#fff;padding:14px 20px;font-size:15px;font-weight:700;}
+.sample-body{padding:20px;}
+.sample-list{list-style:none;}
+.sample-list li{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid #f0f0f0;font-size:14px;color:#444;line-height:1.6;}
+.sample-list li:last-child{border-bottom:none;}
+.sample-list li::before{content:'✓';color:var(--primary);font-weight:700;flex-shrink:0;margin-top:2px;}
+/* 택배 안내 */
+.delivery-box{background:linear-gradient(135deg,#142340,#1d3158);border-radius:14px;padding:32px 40px;color:#fff;display:flex;align-items:center;gap:40px;margin:24px 0;}
+.delivery-icon{font-size:56px;flex-shrink:0;}
+.delivery-info h3{font-size:20px;font-weight:700;margin-bottom:12px;}
+.delivery-info p{font-size:15px;opacity:0.9;line-height:1.7;margin-bottom:8px;}
+.delivery-addr{background:rgba(255,255,255,0.15);border-radius:8px;padding:12px 18px;font-size:15px;font-weight:600;margin-top:12px;display:inline-block;}
+/* 사이드바 */
+.sidebar-right{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:500;display:flex;flex-direction:column;gap:0;border-radius:12px 0 0 12px;overflow:hidden;box-shadow:-4px 0 20px rgba(0,0,0,0.12);}
+.sb-btn{width:64px;padding:11px 5px;background:var(--primary);color:#fff;text-align:center;font-size:11px;font-weight:600;line-height:1.3;cursor:pointer;transition:filter 0.2s,transform 0.15s;display:flex;flex-direction:column;align-items:center;gap:4px;border:none;}
+.sb-btn:hover{filter:brightness(1.2);transform:translateX(-3px);}
+.sb-btn svg{width:20px;height:20px;fill:currentColor;}
+.sb-btn.c-green{background:#5d76a8;}.sb-btn.c-red{background:#1d3158;}.sb-btn.c-purple{background:#5d76a8;}
+.sb-btn.c-kakao{background:#FEE500;color:#3C1E1E;}.sb-btn.c-naver{background:#03C75A;}
+.sb-btn.c-blog{background:#00C73C;}.sb-btn.c-insta{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);}
+/* CTA 리본 */
+.cta-ribbon{position:fixed;bottom:0;left:0;right:0;z-index:600;background:linear-gradient(90deg,var(--primary-dark) 0%,var(--primary-light) 100%);padding:12px 24px;display:flex;align-items:center;justify-content:center;gap:20px;box-shadow:0 -4px 20px rgba(0,0,0,0.15);}
+.cta-ribbon-text{color:#fff;font-size:15px;font-weight:600;}
+.cta-ribbon-text span{opacity:0.8;font-weight:400;margin-left:8px;font-size:14px;}
+.cta-ribbon-btn{padding:9px 24px;border-radius:50px;font-size:14px;font-weight:700;transition:all 0.2s;white-space:nowrap;}
+.cta-ribbon-btn.solid{background:var(--accent-orange);color:#fff;}
+.cta-ribbon-btn.solid:hover{background:#EFF6FF;}
+.cta-ribbon-btn.outline{border:2px solid rgba(255,255,255,0.7);color:#fff;}
+.cta-ribbon-btn.outline:hover{background:rgba(255,255,255,0.12);}
+.cta-ribbon-close{position:absolute;right:20px;background:none;border:none;color:rgba(255,255,255,0.6);font-size:20px;cursor:pointer;padding:4px 8px;transition:color 0.2s;}
+.cta-ribbon-close:hover{color:#fff;}
+#scrollTop{position:fixed;bottom:70px;left:30px;z-index:500;width:44px;height:44px;background:var(--primary);color:#fff;border-radius:50%;border:none;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,0.15);transition:all 0.2s;}
+footer{background:#142340;color:rgba(255,255,255,0.65);padding:50px 24px 28px;}
+.footer-inner{max-width:1260px;margin:0 auto;}
+.footer-top{display:flex;gap:60px;padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,0.1);margin-bottom:28px;}
+.footer-brand .fn{font-size:17px;font-weight:800;color:#fff;margin-bottom:4px;}
+.footer-brand .fen{font-size:12px;opacity:0.5;margin-bottom:16px;}
+.footer-links{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:14px;}
+.footer-links a{font-size:13px;color:rgba(255,255,255,0.55);transition:color 0.2s;}
+.footer-links a:hover{color:#fff;}
+.footer-info{display:flex;flex-wrap:wrap;gap:6px 20px;font-size:13px;}
+.footer-info .fi{display:flex;gap:6px;align-items:center;}
+.footer-info .fi span{color:rgba(255,255,255,0.35);}
+.footer-bottom{text-align:center;font-size:12px;opacity:0.35;margin-top:10px;}
+.footer-social{display:flex;gap:10px;margin-top:16px;}
+.footer-social a{width:34px;height:34px;background:rgba(255,255,255,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background 0.2s;}
+.footer-social a:hover{background:rgba(255,255,255,0.25);}
+.footer-social svg{width:16px;height:16px;fill:rgba(255,255,255,0.7);}
+@media(max-width:768px){
+  :root{--nav-height:64px;}
+  .header-inner{padding:0 16px;}.hamburger{display:flex;}
+  .nav-wrap{position:fixed;top:64px;left:-100%;width:82%;max-width:320px;height:calc(100vh - 64px);background:#fff;flex-direction:column;align-items:stretch;overflow-y:auto;transition:left 0.3s;box-shadow:4px 0 20px rgba(0,0,0,0.1);z-index:999;gap:0;}
+  .nav-wrap.open{left:0;}.nav-menu{flex-direction:column;}
+  .nav-link{height:auto;padding:16px 20px;border-bottom:1px solid #f0f0f0;}
+  .dropdown{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border-top:none;border-left:4px solid var(--primary);display:none;border-radius:0;}
+  .nav-item.open .dropdown{display:block;}.auth-btns{display:none;}
+  .process-flow{flex-direction:column;gap:8px;}.process-arrow{transform:rotate(90deg);}
+  .doc-grid{grid-template-columns:1fr;}.sample-grid{grid-template-columns:1fr;}
+  .delivery-box{flex-direction:column;gap:20px;padding:24px;}.delivery-icon{font-size:40px;}
+  .sidebar-right{display:none;}.footer-top{flex-direction:column;gap:24px;}
+  .content-wrap{padding:40px 16px;}.page-hero h1{font-size:24px;}
+  .cta-ribbon{flex-wrap:wrap;gap:10px;padding:10px 16px;}
+  .cta-ribbon-close{position:static;margin-left:4px;}
+}
+</style>
+</head>
+<body>
+
+<header><div class="header-inner">
+  <a href="index.html" class="logo"><div class="logo-img-wrap">
+    <img src="images/main_1.jpg" alt="ISA연구원" class="logo-svg">
+    <div class="logo-divider"></div>
+    <img src="images/main_2.jpg" alt="KOLAS" class="logo-kolas">
+  </div></a>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  <div class="nav-wrap" id="navWrap">
+    <nav><ul class="nav-menu">
+      <li class="nav-item"><a class="nav-link" href="#">연구원소개</a>
+        <div class="dropdown">
+          <a href="greeting.html">인사말</a><a href="history.html">연혁</a>
+          <a href="organization.html">조직도</a><a href="certification.html">지정·인정현황</a>
+          <a href="location.html">오시는길</a>
+        </div></li>
+      <li class="nav-item"><a class="nav-link" href="#">검사분야</a>
+        <div class="dropdown">
+          <a href="food.html">식품 자가품질검사</a>
+          <a href="livestock.html">축산물 자가품질검사</a>
+          <a href="health-food.html">건강기능식품</a>
+              <a href="nutrition.html">영양성분 검사</a>
+          <a href="microbiology.html">미생물 검사</a>
+          <a href="chemistry.html">이화학 검사</a>
+          <a href="haccp.html">HACCP 유효성검사</a>
+              <a href="shelf-life.html">소비기한 설정시험</a>
+          <a href="allergen.html">알레르기·할랄·비건</a>
+          <a href="air-quality.html">대기측정 대행</a>
+        </div></li>
+      <li class="nav-item"><a class="nav-link" href="inquiry.html">검사의뢰</a>
+        <div class="dropdown">
+          <a href="inquiry.html#procedure">검사 진행 절차</a>
+          <a href="inquiry.html#documents">검사에 필요한 서류 안내</a>
+        </div></li>
+      <li class="nav-item"><a class="nav-link" href="support.html">고객지원</a>
+        <div class="dropdown">
+          <a href="support.html#download">양식다운로드</a>
+          <a href="support.html#faq">자주하는질문</a>
+          <a href="support.html#contact">문의하기</a>
+        </div></li>
+      <li class="nav-item"><a class="nav-link" href="notice.html">알림마당</a>
+        <div class="dropdown">
+          <a href="notice.html#announcements">공지사항</a>
+          <a href="notice.html#regulations">관련 법규</a>
+          <a href="notice.html#archive">자료실</a>
+        </div></li>
+      <li class="nav-item"><a class="nav-link" href="quote.html">견적·상담</a>
+        <div class="dropdown">
+          <a href="quote.html#consult">온라인 상담 신청</a>
+          <a href="quote.html#quote-form">견적 요청</a>
+        </div></li>
+    </ul></nav>
+    <div class="auth-btns">
+      <a href="#" class="btn-auth login">로그인</a>
+      <a href="#" class="btn-auth">회원가입</a>
+      <a href="#" class="btn-auth">인트라넷</a>
+    </div>
+  </div>
+</div></header>
+
+<div class="sidebar-right">
+  <a href="quote.html" class="sb-btn" style="background:#F59E0B"><svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>실시간<br>견적</a>
+  <a href="http://pf.kakao.com/_wLxhxnb" target="_blank" class="sb-btn" style="background:#5d76a8"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>상담<br>요청</a>
+  <a href="support.html#download" class="sb-btn c-green"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>양식<br>다운</a>
+  <a href="notice.html" class="sb-btn c-purple"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>공지<br>사항</a>
+  <a href="https://www.youtube.com/@ISALABB" target="_blank" class="sb-btn c-red"><svg viewBox="0 0 24 24"><path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z"/></svg>유튜브</a>
+  <a href="https://blog.naver.com/isalab" target="_blank" class="sb-btn c-blog"><svg viewBox="0 0 24 24"><path d="M16 8.414l-4.5-6.414H4v16h4V9.586l4.5 6.414H20V2h-4z"/></svg>블로그</a>
+  <a href="https://www.instagram.com/isalab_kr" target="_blank" class="sb-btn c-insta"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>인스타</a>
+  <a href="http://pf.kakao.com/_wLxhxnb" target="_blank" class="sb-btn c-kakao"><svg viewBox="0 0 24 24"><path d="M12 3C6.48 3 2 6.48 2 10.8c0 2.73 1.65 5.13 4.13 6.54L5 21l4.35-2.4c.85.22 1.73.4 2.65.4 5.52 0 10-3.48 10-7.8S17.52 3 12 3z"/></svg>카카오</a>
+  <a href="https://cafe.naver.com/isalabb" target="_blank" class="sb-btn c-naver"><svg viewBox="0 0 24 24"><path d="M16 8.414l-4.5-6.414H4v16h4V9.586l4.5 6.414H20V2h-4z"/></svg>카페</a>
+</div>
+
+<div class="page-hero"><div class="page-hero-content">
+  <h1>대기측정 대행</h1>
+  <div class="breadcrumb"><a href="index.html">홈</a><span class="sep">›</span>검사분야<span class="sep">›</span>대기측정 대행</div>
+</div></div>
+
+<nav class="sub-nav"><div class="sub-nav-inner">
+  <a href="food.html">식품 자가품질검사</a>
+  <a href="livestock.html">축산물 자가품질검사</a>
+  <a href="nutrition.html">영양성분 검사</a>
+  <a href="microbiology.html">미생물 검사</a>
+  <a href="chemistry.html">이화학 검사</a>
+  <a href="shelf-life.html">소비기한 설정시험</a>
+  <a href="allergen.html">알레르기·할랄·비건</a>
+  <a href="air-quality.html" class="active">대기측정 대행</a>
+</div></nav>
+
+<div class="content-wrap">
+
+  <div class="content-section">
+    <h2 class="section-heading">대기측정 대행이란?</h2>
+    <p style="font-size:15px;color:#444;line-height:1.9;">「대기환경보전법」에 따라 대기오염물질 배출시설을 운영하는 사업장은 정기적인 자가측정 의무가 있습니다. ㈜아이에스에이연구원은 <strong>경기도 대기측정대행업 등록 제68호</strong> 기관으로서 시료 채취부터 분석·보고서 제출까지 일괄 대행해 드립니다.</p>
+    <div class="highlight-box">
+      📌 대기측정대행업 등록: <strong>경기도 제68호</strong> (2025.11 등록)
+    </div>
+  </div>
+
+  <div class="content-section">
+    <h2 class="section-heading">측정 항목</h2>
+    <div class="doc-grid">
+      <div class="doc-card">
+        <div class="doc-icon" style="background:#5d76a8;"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg></div>
+        <div><h4>가스상 물질</h4><p>황산화물(SOx), 질소산화물(NOx), 일산화탄소(CO), 염화수소(HCl), 암모니아(NH₃), 황화수소(H₂S) 등</p></div>
+      </div>
+      <div class="doc-card">
+        <div class="doc-icon" style="background:#5d76a8;"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg></div>
+        <div><h4>입자상 물질</h4><p>먼지, 매연</p></div>
+      </div>
+      <div class="doc-card">
+        <div class="doc-icon" style="background:#5d76a8;"><svg viewBox="0 0 24 24"><path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3z"/></svg></div>
+        <div><h4>특정대기유해물질</h4><p>플루오린화합물, 페놀화합물, 사이안화수소</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <h2 class="section-heading">측정 주기</h2>
+    <div class="notice-box">대기환경보전법 시행규칙 [별표 11]에 따라 배출시설 종류별 자가측정 주기가 정해져 있습니다.</div>
+    <div class="sample-grid">
+      <div class="sample-card">
+        <div class="sample-head" style="background:#5d76a8;">1종 사업장</div>
+        <div class="sample-body"><ul class="sample-list">
+          <li>대기오염물질 발생량 80톤/년 이상</li>
+          <li>측정 주기: <strong>매주 1회 이상</strong></li>
+        </ul></div>
+      </div>
+      <div class="sample-card">
+        <div class="sample-head" style="background:#5d76a8;">2종 사업장</div>
+        <div class="sample-body"><ul class="sample-list">
+          <li>대기오염물질 발생량 20톤 이상 80톤 미만/년</li>
+          <li>측정 주기: <strong>매월 2회 이상</strong></li>
+        </ul></div>
+      </div>
+      <div class="sample-card">
+        <div class="sample-head" style="background:#5d76a8;">3종 사업장</div>
+        <div class="sample-body"><ul class="sample-list">
+          <li>대기오염물질 발생량 10톤 이상 20톤 미만/년</li>
+          <li>측정 주기: <strong>2개월에 1회 이상</strong></li>
+        </ul></div>
+      </div>
+      <div class="sample-card">
+        <div class="sample-head" style="background:#5d76a8;">4·5종 사업장</div>
+        <div class="sample-body"><ul class="sample-list">
+          <li>4종: 대기오염물질 발생량 2톤 이상 10톤 미만/년</li>
+          <li>5종: 대기오염물질 발생량 2톤 미만/년</li>
+          <li>측정 주기: <strong>반기 1회 이상</strong></li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="notice-box" style="margin-top:16px;">※ <strong>특정대기유해물질</strong>은 사업장 종별과 무관하게 <strong>전 사업장에서 매달 2회 이상</strong> 측정해야 합니다.</div>
+  </div>
+
+  <div class="content-section">
+    <h2 class="section-heading">대행 프로세스</h2>
+    <div class="process-flow">
+      <div class="process-step"><div class="process-num">1</div><div class="process-title">사전 협의</div><div class="process-desc">사업장 정보·배출시설·측정 항목 협의</div></div>
+      <div class="process-arrow">▶</div>
+      <div class="process-step"><div class="process-num">2</div><div class="process-title">방문 측정</div><div class="process-desc">전문 측정 인력 현장 방문 및 시료 채취</div></div>
+      <div class="process-arrow">▶</div>
+      <div class="process-step"><div class="process-num">3</div><div class="process-title">분석</div><div class="process-desc">실험실 분석 및 환경부 고시 방법 적용</div></div>
+      <div class="process-arrow">▶</div>
+      <div class="process-step"><div class="process-num">4</div><div class="process-title">보고서 발급</div><div class="process-desc">측정 결과 보고서 작성 및 발송</div></div>
+      <div class="process-arrow">▶</div>
+      <div class="process-step"><div class="process-num">5</div><div class="process-title">관청 제출</div><div class="process-desc">필요 시 관할 지자체 제출 자료 지원</div></div>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <h2 class="section-heading">신청 안내</h2>
+    <div style="background:#F5F8FF;border:1px solid #E0E8F8;border-radius:14px;padding:32px 36px;text-align:center;">
+      <p style="font-size:16px;color:#444;margin-bottom:10px;line-height:1.7;">사업장 종별·배출시설 수·항목 수에 따라 비용이 산정됩니다. 사전 상담을 통해 정확한 견적을 안내받으세요.</p>
+      <p style="font-size:14px;color:#666;margin-bottom:24px;line-height:1.7;">📞 <strong>031-429-0620</strong> · 직통 <strong>070-8831-7376</strong> · ✉ <a href="mailto:isalab@naver.com" style="color:#1d3158;text-decoration:underline;">isalab@naver.com</a></p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a href="quote.html" style="display:inline-flex;align-items:center;gap:6px;padding:14px 32px;background:#1d3158;color:#fff;border-radius:8px;font-size:15px;font-weight:700;">📋 실시간 견적 요청</a>
+        <a href="inquiry.html" style="display:inline-flex;align-items:center;gap:6px;padding:14px 32px;background:#fff;color:#1d3158;border:2px solid #1d3158;border-radius:8px;font-size:15px;font-weight:700;">💬 상담 신청</a>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /content-wrap -->
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="fn">㈜아이에스에이연구원</div>
+        <div class="fen">International Specialized Analysis Research Institute Co., Ltd.</div>
+        <div class="footer-links">
+          <a href="greeting.html">인사말</a>
+          <a href="organization.html">조직도</a>
+          <a href="history.html">연혁</a>
+          <a href="certification.html">지정·인정현황</a>
+          <a href="location.html">오시는길</a>
+          <a href="food.html">식품검사</a>
+          <a href="livestock.html">축산물검사</a>
+          <a href="nutrition.html">영양성분</a>
+          <a href="chemistry.html">이화학</a>
+          <a href="microbiology.html">미생물</a>
+        </div>
+        <div class="footer-social">
+          <a href="https://www.youtube.com/@ISALABB" target="_blank" title="유튜브"><svg viewBox="0 0 24 24"><path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z"/></svg></a>
+          <a href="https://www.instagram.com/isalab_kr" target="_blank" title="인스타그램"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+          <a href="http://pf.kakao.com/_wLxhxnb" target="_blank" title="카카오채널"><svg viewBox="0 0 24 24"><path d="M12 3C6.48 3 2 6.48 2 10.8c0 2.73 1.65 5.13 4.13 6.54L5 21l4.35-2.4c.85.22 1.73.4 2.65.4 5.52 0 10-3.48 10-7.8S17.52 3 12 3z"/></svg></a>
+          <a href="https://blog.naver.com/isalab" target="_blank" title="네이버블로그"><svg viewBox="0 0 24 24"><path d="M16 8.414l-4.5-6.414H4v16h4V9.586l4.5 6.414H20V2h-4z"/></svg></a>
+          <a href="https://cafe.naver.com/isalabb" target="_blank" title="네이버카페"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-info">
+          <div class="fi"><span>대표이사</span> 최영훈</div>
+          <div class="fi"><span>사업자등록번호</span> 350-88-01260</div>
+          <div class="fi"><span>주소</span> 경기도 의왕시 한밭들길 12 (우편번호 16073)</div>
+          <div class="fi"><span>대표전화</span> 031-429-0620</div>
+          <div class="fi"><span>상담문의</span> 070-8831-7376, 7366</div>
+          <div class="fi"><span>팩스</span> 031-427-0625</div>
+          <div class="fi"><span>이메일</span> <a href="mailto:isalab@naver.com" style="color:inherit">isalab@naver.com</a></div>
+          <div class="fi"><span>운영시간</span> 평일 09:00~18:00 / 점심 12:00~13:00 (주말·공휴일 휴무)</div>
+          <div class="fi"><span>식약처 지정</span> 식품 등 시험·검사기관 제120호 | 축산물 시험·검사기관 제54호</div>
+          <div class="fi"><span>KOLAS</span> 국제공인시험기관 인정번호 KT1316</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">Copyright &copy; 2026 ㈜아이에스에이연구원 All rights reserved.</div>
+  </div>
+</footer>
+
+<button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><svg viewBox="0 0 24 24" width="20" height="20" fill="#fff"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg></button>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  const hamburger = document.getElementById('hamburger');
+  const navWrap = document.getElementById('navWrap');
+  if(hamburger && navWrap){
+    hamburger.addEventListener('click', function(){
+      navWrap.classList.toggle('open');
+    });
+    document.addEventListener('click', function(e){
+      if(!hamburger.contains(e.target) && !navWrap.contains(e.target)) navWrap.classList.remove('open');
+    });
+    document.querySelectorAll('.nav-link').forEach(function(link){
+      link.addEventListener('click', function(e){
+        if(window.innerWidth <= 768){
+          const item = link.parentElement;
+          if(item.querySelector('.dropdown')){
+            e.preventDefault();
+            item.classList.toggle('open');
+          }
+        }
+      });
+    });
+  }
+  window.addEventListener('scroll', function(){
+    const btn = document.getElementById('scrollTop');
+    if(btn) btn.style.display = window.scrollY > 300 ? 'flex' : 'none';
+  });
+  // 서브네비 활성화
+  const sections = document.querySelectorAll('.content-section[id]');
+  const navLinks = document.querySelectorAll('.sub-nav a');
+  window.addEventListener('scroll', function(){
+    let current = '';
+    sections.forEach(function(s){
+      if(window.scrollY >= s.offsetTop - 160) current = s.id;
+    });
+    navLinks.forEach(function(a){
+      a.classList.remove('active');
+      if(a.getAttribute('href') === '#'+current) a.classList.add('active');
+    });
+  });
+});
+</script>
+</body>
+</html>
