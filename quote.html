@@ -48,18 +48,20 @@ header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,
 .notice-box{background:#FFF8E1;border:1px solid #FFC107;border-left:4px solid #FFC107;border-radius:6px;padding:14px 18px;font-size:14px;color:#5D4037;margin-bottom:24px;line-height:1.7;}
 .highlight-box{background:var(--light-bg);border-left:4px solid var(--primary);border-radius:0 8px 8px 0;padding:16px 20px;font-size:14px;color:#333;line-height:1.8;margin:20px 0;}
 /* 카카오 상담 */
-.kakao-cta{background:linear-gradient(135deg,#FEE500 0%,#FFD700 100%);border-radius:16px;padding:40px;text-align:center;margin-bottom:32px;}
-.kakao-cta h3{font-size:22px;font-weight:800;color:#1A0A00;margin-bottom:8px;}
-.kakao-cta p{font-size:15px;color:#4A2D00;margin-bottom:24px;line-height:1.7;}
-.kakao-cta-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 40px;background:#1A0A00;color:#FEE500;border-radius:50px;font-size:16px;font-weight:800;transition:all 0.2s;}
+.kakao-cta{background:linear-gradient(135deg,#FEE500 0%,#FFD700 100%);border-radius:14px;padding:22px 28px;text-align:center;margin-bottom:24px;}
+.kakao-cta h3{font-size:19px;font-weight:800;color:#181000;margin-bottom:7px;}
+.kakao-cta p{font-size:14.5px;color:#3A2400;font-weight:500;margin-bottom:16px;line-height:1.65;}
+.kakao-cta-btn{display:inline-flex;align-items:center;gap:9px;padding:11px 30px;background:#1A0A00;color:#FEE500;border-radius:50px;font-size:15px;font-weight:800;transition:all 0.2s;}
 .kakao-cta-btn:hover{background:#000;transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.25);}
 .kakao-cta-btn svg{width:24px;height:24px;fill:#FEE500;}
-.quick-contacts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px;}
-.qc-card{background:#fff;border-radius:12px;padding:20px 24px;display:flex;align-items:center;gap:16px;}
-.qc-icon{font-size:28px;flex-shrink:0;}
-.qc-label{font-size:12px;color:#888;margin-bottom:2px;}
-.qc-val{font-size:16px;font-weight:700;color:#222;}
+.quick-contacts{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px;}
+.qc-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px 20px;display:flex;align-items:center;gap:14px;box-shadow:0 1px 3px rgba(29,49,88,0.05);transition:border-color .18s,box-shadow .18s,transform .18s;}
+.qc-card:hover{border-color:var(--primary-light);box-shadow:0 6px 18px rgba(29,49,88,0.1);transform:translateY(-2px);}
+.qc-icon{width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:22px;background:var(--light-bg);border-radius:50%;}
+.qc-label{font-size:12px;color:#8a93a5;font-weight:600;margin-bottom:3px;letter-spacing:.02em;}
+.qc-val{font-size:17px;font-weight:700;color:#222;line-height:1.3;}
 .qc-val a{color:var(--primary);}
+.qc-val a:hover{text-decoration:underline;}
 /* 견적 신청 폼 */
 .quote-form{background:#fff;border:2px solid var(--border);border-radius:16px;padding:40px;}
 .form-group{margin-bottom:22px;}
@@ -131,7 +133,63 @@ footer{background:#142340;color:rgba(255,255,255,0.65);padding:50px 24px 28px;}
 .footer-social a{width:34px;height:34px;background:rgba(255,255,255,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background 0.2s;}
 .footer-social a:hover{background:rgba(255,255,255,0.25);}
 .footer-social svg{width:16px;height:16px;fill:rgba(255,255,255,0.7);}
+/* 검사 제품 목록 (다중) */
+.product-list{display:flex;flex-direction:column;gap:14px;}
+.product-row{position:relative;border:1px solid var(--border);border-radius:12px;padding:18px 18px 6px;background:#fff;}
+.product-row .prow-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.product-row .prow-no{font-size:13px;font-weight:700;color:var(--primary);background:var(--light-bg);border-radius:20px;padding:3px 12px;}
+.prod-del{border:none;background:#F5E9E7;color:#B23B32;width:26px;height:26px;border-radius:50%;font-size:16px;line-height:1;cursor:pointer;font-family:inherit;transition:all .15s;}
+.prod-del:hover{background:#F3C9C4;}
+.prow-grid{display:grid;grid-template-columns:170px 1fr 90px;gap:12px;}
+.prow-items{margin-top:12px;}
+.prow-lbl{font-size:12px;font-weight:600;color:#7a869c;margin-bottom:5px;}
+.btn-add-prod{margin-top:14px;width:100%;padding:12px;border:1.5px dashed var(--primary-light);background:#FAFCFF;color:var(--primary);border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .15s;}
+.btn-add-prod:hover{background:var(--light-bg);border-style:solid;}
+select.form-control{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='%235d76a8'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;}
+/* 자가품질 도우미 접기 */
+.helper-toggle{margin-top:8px;border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.helper-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 18px;cursor:pointer;background:#FAFCFF;font-size:14px;font-weight:700;color:var(--primary);user-select:none;}
+.helper-head .arrow{transition:transform .2s;font-size:12px;}
+.helper-toggle.open .helper-head .arrow{transform:rotate(180deg);}
+.helper-body{display:none;padding:20px 18px 6px;border-top:1px solid var(--border);}
+.helper-toggle.open .helper-body{display:block;}
+/* 조건부 제품정보(자가품질) */
+.cond-block{display:none;margin-top:8px;border:1px dashed var(--primary-light);background:#FAFCFF;border-radius:12px;padding:22px 22px 8px;}
+.cond-block.show{display:block;}
+.cond-block-title{font-size:14px;font-weight:700;color:var(--primary);margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.cond-block-title .badge{font-size:11px;font-weight:600;background:var(--primary);color:#fff;padding:2px 8px;border-radius:20px;}
+.field-hint{font-size:12px;color:#8a93a5;margin-top:6px;line-height:1.6;}
+/* 예상 추가항목 안내 */
+.extra-box{margin-top:18px;background:#F0F6EC;border:1px solid #BEDBA8;border-left:4px solid #6FA84B;border-radius:10px;padding:16px 18px;}
+.extra-box h4{font-size:13px;font-weight:700;color:#3B5E27;margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.extra-chips{display:flex;flex-wrap:wrap;gap:8px;}
+.extra-chip{background:#fff;border:1px solid #BEDBA8;border-radius:20px;padding:5px 12px;font-size:12.5px;color:#37561F;font-weight:600;}
+.extra-chip .tag{color:#6FA84B;font-weight:700;margin-left:4px;font-size:11px;}
+.extra-empty{font-size:12.5px;color:#5b7a44;}
+.extra-note{font-size:11.5px;color:#6d8a55;margin-top:10px;line-height:1.6;}
+/* 비밀번호 */
+.pw-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.pw-hint{font-size:12px;color:#8a93a5;margin-top:6px;}
+/* 조회·수정 */
+.lookup-card{background:#fff;border:2px solid var(--border);border-radius:16px;padding:32px 40px;}
+.lookup-form{display:grid;grid-template-columns:1fr 1fr auto;gap:12px;align-items:end;}
+.btn-line{padding:12px 26px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;height:44px;white-space:nowrap;transition:background .2s;}
+.btn-line:hover{background:var(--primary-dark);}
+.btn-ghost{background:#fff;color:var(--primary);border:1.5px solid var(--primary);}
+.btn-ghost:hover{background:var(--light-bg);}
+.lookup-msg{font-size:13px;margin-top:14px;padding:10px 14px;border-radius:8px;display:none;}
+.lookup-msg.err{display:block;background:#FDECEA;color:#B23B32;border:1px solid #F5C6C0;}
+.lookup-msg.ok{display:block;background:#E9F3EC;color:#2E6B3E;border:1px solid #BFE0C8;}
+.record-view{display:none;margin-top:24px;border-top:1px dashed var(--border);padding-top:24px;}
+.record-view.show{display:block;}
+.record-meta{display:flex;flex-wrap:wrap;gap:10px 20px;margin-bottom:20px;font-size:13px;color:#555;}
+.record-meta b{color:#222;}
+.status-badge{display:inline-block;font-size:12px;font-weight:700;padding:3px 12px;border-radius:20px;}
+.status-접수{background:#EAF1FB;color:#1d3158;}
+.status-처리중{background:#FFF3E0;color:#B36A00;}
+.status-완료{background:#E9F3EC;color:#2E6B3E;}
 /* 완료 화면 */
+.receipt-code{display:inline-block;margin:10px 0 4px;font-size:22px;font-weight:800;letter-spacing:1px;color:var(--primary);background:var(--light-bg);border:1px dashed var(--primary-light);border-radius:10px;padding:10px 22px;}
 .success-box{display:none;text-align:center;padding:60px 40px;background:var(--light-bg);border-radius:16px;border:2px solid var(--border);}
 .success-box .success-icon{font-size:64px;margin-bottom:20px;}
 .success-box h3{font-size:24px;font-weight:800;color:var(--primary);margin-bottom:12px;}
@@ -151,6 +209,11 @@ footer{background:#142340;color:rgba(255,255,255,0.65);padding:50px 24px 28px;}
   .quick-contacts{grid-template-columns:1fr;}
   .quote-form{padding:24px 20px;}
   .type-grid{grid-template-columns:1fr 1fr;}
+  .pw-row{grid-template-columns:1fr;}
+  .lookup-form{grid-template-columns:1fr;}
+  .lookup-card{padding:24px 20px;}
+  .cond-block{padding:18px 16px 4px;}
+  .prow-grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -200,6 +263,7 @@ footer{background:#142340;color:rgba(255,255,255,0.65);padding:50px 24px 28px;}
         <div class="dropdown">
           <a href="quote.html#consult">온라인 상담 신청</a>
           <a href="quote.html#quote-form">견적 요청</a>
+          <a href="quote.html#quote-lookup">견적 조회·수정</a>
         </div></li>
     </ul></nav>
     <div class="auth-btns">
@@ -230,6 +294,7 @@ footer{background:#142340;color:rgba(255,255,255,0.65);padding:50px 24px 28px;}
 <nav class="sub-nav"><div class="sub-nav-inner">
   <a href="#consult" class="active">카카오 상담</a>
   <a href="#quote-form">견적 신청</a>
+  <a href="#quote-lookup">견적 조회·수정</a>
 </div></nav>
 
 <div class="content-wrap">
@@ -273,7 +338,7 @@ footer{background:#142340;color:rgba(255,255,255,0.65);padding:50px 24px 28px;}
         <div class="qc-icon">🕘</div>
         <div>
           <div class="qc-label">운영시간</div>
-          <div class="qc-val" style="font-size:14px;">평일 09:00~18:00</div>
+          <div class="qc-val">평일 09:00~18:00</div>
         </div>
       </div>
     </div>
@@ -282,16 +347,30 @@ footer{background:#142340;color:rgba(255,255,255,0.65);padding:50px 24px 28px;}
   <!-- 견적 신청 폼 -->
   <div class="content-section" id="quote-form">
     <h2 class="section-heading">견적 신청</h2>
-    <div class="notice-box">아래 양식을 작성해 주시면 <strong>1 영업일 이내</strong>에 견적서를 이메일 또는 전화로 안내해 드립니다.</div>
+    <div class="notice-box">아래 양식을 작성해 주시면 <strong>1 영업일 이내</strong>에 견적서를 이메일 또는 전화로 안내해 드립니다. 신청 시 설정하신 <strong>비밀번호</strong>로 이후 <a href="#quote-lookup" style="color:var(--primary);font-weight:700;">견적 조회·수정</a>에서 내용을 확인·수정하실 수 있습니다.</div>
 
     <div class="quote-form" id="quoteFormWrap">
       <form id="quoteForm" onsubmit="submitForm(event)" novalidate>
 
         <!-- 신청자 정보 -->
-        <h3 style="font-size:16px;font-weight:700;color:#333;margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid var(--border);">신청자 정보</h3>
+        <h3 style="font-size:16px;font-weight:700;color:#333;margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid var(--border);">① 신청자 정보</h3>
+        <div class="form-group">
+          <label class="form-label">허가 종류<span class="req">*</span></label>
+          <div class="radio-group" id="licenseGroup">
+            <label class="radio-label" onclick="selectRadio(this,'licenseGroup')">
+              <input type="radio" name="license" value="제조·가공업"> 제조·가공업
+            </label>
+            <label class="radio-label" onclick="selectRadio(this,'licenseGroup')">
+              <input type="radio" name="license" value="즉석판매제조·가공업"> 즉석판매제조·가공업
+            </label>
+            <label class="radio-label" onclick="selectRadio(this,'licenseGroup')">
+              <input type="radio" name="license" value="기타"> 기타
+            </label>
+          </div>
+        </div>
         <div class="form-row">
           <div class="form-group">
-            <label class="form-label">회사/기관명<span class="req">*</span></label>
+            <label class="form-label">업체/기관명<span class="req">*</span></label>
             <input type="text" class="form-control" id="company" placeholder="예) ㈜아이에스에이연구원" required>
           </div>
           <div class="form-group">
@@ -310,61 +389,57 @@ footer{background:#142340;color:rgba(255,255,255,0.65);padding:50px 24px 28px;}
           </div>
         </div>
 
-        <!-- 검사 유형 -->
-        <h3 style="font-size:16px;font-weight:700;color:#333;margin:28px 0 18px;padding-bottom:10px;border-bottom:1px solid var(--border);">검사 유형 선택<span class="req">*</span></h3>
+        <!-- 검사 제품 목록 -->
+        <h3 style="font-size:16px;font-weight:700;color:#333;margin:28px 0 8px;padding-bottom:10px;border-bottom:1px solid var(--border);">② 검사 제품 목록<span class="req">*</span></h3>
+        <div style="font-size:13px;color:#888;margin-bottom:16px;">제품마다 <b>검사구분</b>을 고르세요. <b>자가품질검사</b>는 유형(예: 과자)을 검색해 선택하면 검사항목·단가가 나오고 <b>예상 금액이 자동 계산</b>됩니다. 그 외 검사(영양성분·미생물 등)는 항목만 적어 주시면 <b>관리자 확인 후 금액을 안내</b>드립니다. 여러 제품은 <b>＋ 제품 추가</b>로 늘릴 수 있습니다.</div>
 
+        <div class="product-list" id="productList"><!-- 제품 행 JS로 생성 --></div>
+        <button type="button" class="btn-add-prod" onclick="addProductRow()">＋ 제품 추가</button>
+
+        <!-- 제품 카드 내 수수료 표시용 스타일 + 공용 유형 목록 -->
+        <style>
+          .fee-list{border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-top:6px;}
+          .fee-list:empty{display:none;}
+          .fee-subhead{background:var(--light-bg);font-size:12px;font-weight:700;color:#37561F;padding:8px 14px;border-top:1px solid var(--border);}
+          .fee-list > .fee-subhead:first-child{border-top:none;}
+          .fee-row{display:flex;align-items:flex-start;gap:10px;padding:11px 14px;border-top:1px solid var(--border);cursor:pointer;background:#fff;margin:0;}
+          .fee-list > .fee-row:first-child{border-top:none;}
+          .fee-row input{margin-top:3px;flex:0 0 auto;}
+          .fee-row .fee-name{flex:1 1 auto;font-size:13.5px;color:#333;line-height:1.5;}
+          .fee-row .fee-price{flex:0 0 auto;font-size:13.5px;font-weight:700;color:var(--primary);white-space:nowrap;}
+          .fee-row.disabled{cursor:default;background:#faf7f2;}
+          .fee-row.disabled .fee-price{color:#B36A00;}
+          .fee-badge{display:inline-block;font-size:11px;font-weight:600;padding:1px 7px;border-radius:10px;background:#eef2fb;color:#3a5bbf;margin-left:4px;vertical-align:middle;}
+          .fee-badge.warn{background:#fff2df;color:#B36A00;}
+          .fee-emptynote{padding:14px;font-size:13px;color:#B36A00;background:#faf7f2;border-radius:10px;line-height:1.6;margin-top:6px;}
+          .card-fee{margin-top:4px;border-top:1px dashed var(--border);padding:14px 0 12px;}
+          .fee-cond-details{margin-top:12px;border:1px solid var(--border);border-radius:10px;padding:10px 14px;background:#fbfcfe;}
+          .fee-cond-details summary{cursor:pointer;font-size:13px;font-weight:600;color:#37561F;}
+          .fee-cond-row{display:flex;align-items:center;gap:8px;font-size:13px;color:#444;margin:9px 0 0;cursor:pointer;}
+          .fee-cond-group{font-size:12px;font-weight:700;color:#7a869c;margin-top:12px;}
+          .fee-cardsum{margin-top:10px;text-align:right;font-size:13.5px;color:#555;}
+          .fee-cardsum b{color:var(--primary);font-size:15px;font-variant-numeric:tabular-nums;}
+          .grand-total{position:sticky;bottom:12px;z-index:5;margin-top:18px;border:1.5px solid var(--primary);border-radius:14px;padding:16px 20px;background:#fff;box-shadow:0 6px 24px rgba(29,49,88,.14);}
+          .gt-title{font-size:14px;font-weight:800;color:var(--primary);margin-bottom:6px;}
+          .gt-title span{font-weight:400;color:#999;font-size:12px;}
+          .fee-total-row{display:flex;justify-content:space-between;font-size:14px;color:#555;padding:3px 0;}
+          .fee-total-row.sum{border-top:1px solid var(--border);margin-top:6px;padding-top:9px;font-size:16px;font-weight:800;color:var(--primary);}
+          .fee-total-row b{font-variant-numeric:tabular-nums;}
+        </style>
+        <datalist id="feeTypeList"></datalist>
+
+        <!-- 자가품질검사 예상 합계 (자동 계산, 항목 선택 시 표시) -->
+        <div class="grand-total" id="grandTotalBox" style="display:none;">
+          <div class="gt-title">자가품질검사 예상 금액 <span>(식약처 신고 정가 · 참고용)</span></div>
+          <div class="fee-total-row"><span>공급가액</span><span><b id="gtSupply">0</b> 원</span></div>
+          <div class="fee-total-row"><span>부가세 (10%)</span><span><b id="gtVat">0</b> 원</span></div>
+          <div class="fee-total-row sum"><span>합계 (부가세 포함)</span><span><b id="gtTotal">0</b> 원</span></div>
+          <div class="extra-note" style="margin-top:10px;">※ 「분석불가」 항목과 참고검사(영양성분·미생물 등) 금액은 접수 후 개별 안내드립니다. 최종 검사항목·금액은 연구원 검토를 거쳐 확정됩니다.</div>
+        </div>
+
+        <!-- 처리 및 요청 -->
+        <h3 style="font-size:16px;font-weight:700;color:#333;margin:28px 0 18px;padding-bottom:10px;border-bottom:1px solid var(--border);">③ 처리 및 요청사항</h3>
         <div class="form-group">
-          <label class="form-label">검사 구분</label>
-          <div class="radio-group" id="testTypeGroup">
-            <label class="radio-label" onclick="selectRadio(this,'testTypeGroup')">
-              <input type="radio" name="testType" value="자가품질검사"> 자가품질검사
-            </label>
-            <label class="radio-label" onclick="selectRadio(this,'testTypeGroup')">
-              <input type="radio" name="testType" value="그외"> 그 외 검사
-            </label>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">검사 분야 (중복 선택 가능)<span class="req">*</span></label>
-          <div class="type-grid" id="testFieldGrid">
-            <label class="type-card" onclick="toggleTypeCard(this)">
-              <input type="checkbox" name="testField" value="식품"> <span class="type-icon">🍱</span> 식품 자가품질검사
-            </label>
-            <label class="type-card" onclick="toggleTypeCard(this)">
-              <input type="checkbox" name="testField" value="축산물"> <span class="type-icon">🥩</span> 축산물 자가품질검사
-            </label>
-            <label class="type-card" onclick="toggleTypeCard(this)">
-              <input type="checkbox" name="testField" value="영양성분"> <span class="type-icon">📊</span> 영양성분 검사
-            </label>
-            <label class="type-card" onclick="toggleTypeCard(this)">
-              <input type="checkbox" name="testField" value="미생물"> <span class="type-icon">🔬</span> 미생물 검사
-            </label>
-            <label class="type-card" onclick="toggleTypeCard(this)">
-              <input type="checkbox" name="testField" value="이화학"> <span class="type-icon">⚗️</span> 이화학 검사
-            </label>
-            <label class="type-card" onclick="toggleTypeCard(this)">
-              <input type="checkbox" name="testField" value="소비기한"> <span class="type-icon">📅</span> 소비기한 설정시험
-            </label>
-            <label class="type-card" onclick="toggleTypeCard(this)">
-              <input type="checkbox" name="testField" value="알레르기"> <span class="type-icon">🌾</span> 알레르기·할랄·비건
-            </label>
-            <label class="type-card" onclick="toggleTypeCard(this)">
-              <input type="checkbox" name="testField" value="대기측정"> <span class="type-icon">💨</span> 대기측정 대행
-            </label>
-          </div>
-        </div>
-
-        <!-- 무살균 옵션 -->
-        <div class="unpasteurized-box" id="unpasteurizedBox">
-          <label>
-            <input type="checkbox" id="unpasteurized">
-            <strong>비살균 제품</strong> — 비살균 식품 자가품질검사 항목 추가 적용 (비살균 항목 포함 여부 확인 필요)
-          </label>
-        </div>
-
-        <!-- 긴급 여부 -->
-        <div class="form-group" style="margin-top:24px;">
           <label class="form-label">긴급 처리 여부</label>
           <div class="urgent-wrap">
             <button type="button" class="urgent-btn normal selected" onclick="selectUrgent(this,'normal')">일반 처리</button>
@@ -372,26 +447,33 @@ footer{background:#142340;color:rgba(255,255,255,0.65);padding:50px 24px 28px;}
           </div>
           <div style="font-size:12px;color:#999;margin-top:8px;">긴급 처리는 검사 항목과 시기에 따라 가능 여부가 달라지므로 접수 후 별도 안내드립니다.</div>
         </div>
+        <div class="form-group" style="margin-top:22px;">
+          <label class="form-label">기타 요청사항</label>
+          <textarea class="form-control" id="message" placeholder="검사 목적, 특이사항, 희망 일정, 수신처(견적서 받으실 상호/이메일) 등을 자유롭게 적어 주세요."></textarea>
+        </div>
 
-        <!-- 제품 정보 -->
-        <h3 style="font-size:16px;font-weight:700;color:#333;margin:28px 0 18px;padding-bottom:10px;border-bottom:1px solid var(--border);">제품 정보</h3>
-        <div class="form-row">
+        <!-- 비밀번호 -->
+        <h3 style="font-size:16px;font-weight:700;color:#333;margin:28px 0 18px;padding-bottom:10px;border-bottom:1px solid var(--border);">④ 조회·수정용 비밀번호<span class="req">*</span></h3>
+        <div class="pw-row">
           <div class="form-group">
-            <label class="form-label">제품명</label>
-            <input type="text" class="form-control" id="product" placeholder="예) 들기름, 요거트, 소세지">
+            <label class="form-label">비밀번호<span class="req">*</span></label>
+            <input type="password" class="form-control" id="password" placeholder="4자 이상" required>
           </div>
           <div class="form-group">
-            <label class="form-label">제품 수량 (품목 수)</label>
-            <input type="text" class="form-control" id="quantity" placeholder="예) 3개 품목">
+            <label class="form-label">비밀번호 확인<span class="req">*</span></label>
+            <input type="password" class="form-control" id="password2" placeholder="다시 입력" required>
           </div>
         </div>
-        <div class="form-group">
-          <label class="form-label">기타 요청사항</label>
-          <textarea class="form-control" id="message" placeholder="검사 목적, 특이사항, 희망 일정 등을 자유롭게 적어 주세요."></textarea>
+        <div class="pw-hint">※ 신청 후 발급되는 <b>접수번호</b>와 이 비밀번호로 본인만 견적 내용을 조회·수정할 수 있습니다. 비밀번호는 분실 시 복구가 어려우니 꼭 기억해 주세요.</div>
+
+        <div class="form-group" style="margin-top:18px;">
+          <label class="check-label" style="border:none;padding:0;" onclick="event.stopPropagation();">
+            <input type="checkbox" id="agree"> <span>개인정보 수집·이용에 동의합니다. (견적 안내 목적, 제3자 미제공)</span>
+          </label>
         </div>
 
         <div class="form-submit">
-          <button type="submit" class="btn-submit">
+          <button type="submit" class="btn-submit" id="submitBtn">
             <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
             견적 신청하기
           </button>
@@ -402,7 +484,75 @@ footer{background:#142340;color:rgba(255,255,255,0.65);padding:50px 24px 28px;}
       <div class="success-box" id="successBox">
         <div class="success-icon">✅</div>
         <h3>견적 신청이 접수되었습니다!</h3>
-        <p>입력하신 이메일 및 연락처로<br><strong>1 영업일 이내</strong>에 연락드리겠습니다.<br><br>긴급한 문의는 전화(031-429-0620) 또는<br>카카오톡 채널로 연락 주세요.</p>
+        <p>아래 <strong>접수번호</strong>를 비밀번호와 함께 보관해 주세요.<br>견적 조회·수정 시 필요합니다.</p>
+        <div class="receipt-code" id="receiptCode">-</div>
+        <p style="margin-top:16px;">입력하신 이메일 및 연락처로 <strong>1 영업일 이내</strong>에 연락드리겠습니다.<br><br>긴급한 문의는 전화(031-429-0620) 또는 카카오톡 채널로 연락 주세요.</p>
+        <div style="margin-top:20px;"><button type="button" class="btn-line btn-ghost" onclick="resetForm()">새 견적 신청하기</button></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 견적 조회·수정 -->
+  <div class="content-section" id="quote-lookup">
+    <h2 class="section-heading">견적 조회·수정</h2>
+    <div class="notice-box">신청 시 발급받은 <strong>접수번호</strong>와 <strong>비밀번호</strong>를 입력하시면 본인이 신청한 견적 내용을 확인하고 수정할 수 있습니다.</div>
+
+    <div class="lookup-card">
+      <div class="lookup-form">
+        <div class="form-group" style="margin:0;">
+          <label class="form-label">접수번호</label>
+          <input type="text" class="form-control" id="lkCode" placeholder="예) Q20260710-001">
+        </div>
+        <div class="form-group" style="margin:0;">
+          <label class="form-label">비밀번호</label>
+          <input type="password" class="form-control" id="lkPw" placeholder="비밀번호">
+        </div>
+        <button type="button" class="btn-line" onclick="lookupQuote()">조회하기</button>
+      </div>
+      <div class="lookup-msg" id="lookupMsg"></div>
+
+      <!-- 조회 결과 · 수정 폼 -->
+      <div class="record-view" id="recordView">
+        <div class="record-meta">
+          <span>접수번호 <b id="rvCode">-</b></span>
+          <span>신청일 <b id="rvDate">-</b></span>
+          <span>처리상태 <span class="status-badge" id="rvStatus">접수</span></span>
+        </div>
+        <form id="editForm" onsubmit="updateQuote(event)" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">업체/기관명</label>
+              <input type="text" class="form-control" id="e_company">
+            </div>
+            <div class="form-group">
+              <label class="form-label">담당자명</label>
+              <input type="text" class="form-control" id="e_name">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">연락처</label>
+              <input type="tel" class="form-control" id="e_phone">
+            </div>
+            <div class="form-group">
+              <label class="form-label">이메일</label>
+              <input type="email" class="form-control" id="e_email">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">검사 제품 목록</label>
+            <div class="product-list" id="e_productList"></div>
+            <button type="button" class="btn-add-prod" onclick="addProductRow('e_productList')">＋ 제품 추가</button>
+          </div>
+          <div class="form-group">
+            <label class="form-label">기타 요청사항</label>
+            <textarea class="form-control" id="e_message"></textarea>
+          </div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:10px;">
+            <button type="submit" class="btn-line">수정 내용 저장</button>
+            <button type="button" class="btn-line btn-ghost" onclick="closeRecord()">닫기</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -435,7 +585,7 @@ footer{background:#142340;color:rgba(255,255,255,0.65);padding:50px 24px 28px;}
           <div class="fi"><span>사업자등록번호</span> 350-88-01260</div>
           <div class="fi"><span>주소</span> 경기도 의왕시 한밭들길 12 (우편번호 16073)</div>
           <div class="fi"><span>대표전화</span> 031-429-0620</div>
-          <div class="fi"><span>상담문의</span> 070-8831-7376, 7366</div>
+          <div class="fi"><span>상담문의</span> 070-8831-7376</div>
           <div class="fi"><span>팩스</span> 031-427-0625</div>
           <div class="fi"><span>이메일</span> <a href="mailto:isalab@naver.com" style="color:inherit">isalab@naver.com</a></div>
           <div class="fi"><span>운영시간</span> 평일 09:00~18:00 / 점심 12:00~13:00 (주말·공휴일 휴무)</div>
@@ -480,41 +630,468 @@ document.addEventListener('DOMContentLoaded',function(){
     sections.forEach(function(s){if(window.scrollY>=s.offsetTop-160)current=s.id;});
     navLinks.forEach(function(a){a.classList.remove('active');if(a.getAttribute('href')==='#'+current)a.classList.add('active');});
   });
-  /* 식품 자가품질검사 선택 시 비살균 옵션 표시 */
-  document.querySelectorAll('#testFieldGrid .type-card').forEach(function(card){
-    card.addEventListener('click',function(){
-      const hasFood=document.querySelector('#testFieldGrid input[value="식품"]:checked');
-      document.getElementById('unpasteurizedBox').style.display=hasFood?'block':'none';
-    });
-  });
+  initProducts();
+  loadFees();
 });
+
+/* ===================== 설정 ===================== */
+/* ▼▼▼ 구글 Apps Script 웹앱 배포 후 받은 주소(/exec)를 아래 따옴표 안에 붙여넣으세요 ▼▼▼ */
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzQvQd1gLQFzPewQHvonphVUWLjw60rSVxLwIeZl2aGcOeN4m_4fw2RIeF8Zurd7wEnIw/exec";
+/* ▲▲▲ 예: "https://script.google.com/macros/s/AKfycb..../exec" ▲▲▲ */
+
+/* ===================== 공통 UI ===================== */
 function selectRadio(label,groupId){
   document.querySelectorAll('#'+groupId+' .radio-label').forEach(function(l){l.classList.remove('selected');});
   label.classList.add('selected');
 }
-function toggleTypeCard(card){
-  card.classList.toggle('selected');
+function toggleTypeCard(card){card.classList.toggle('selected');}
+function toggleSelected(label){
+  var box=label.querySelector('input');
+  setTimeout(function(){label.classList.toggle('selected',box.checked);},0);
 }
 function selectUrgent(btn,type){
   document.querySelectorAll('.urgent-btn').forEach(function(b){b.classList.remove('selected','normal');});
   btn.classList.add('selected');
   if(type==='normal')btn.classList.add('normal');
 }
+function getUrgent(){var b=document.querySelector('.urgent-btn.selected');return b&&!b.classList.contains('normal')?'긴급':'일반';}
+function radioVal(name){var el=document.querySelector('input[name="'+name+'"]:checked');return el?el.value:'';}
+function checkVals(name){return Array.prototype.map.call(document.querySelectorAll('input[name="'+name+'"]:checked'),function(el){return el.value;});}
+
+/* ===================== 검사 제품 목록 (다중) ===================== */
+var CATS=['자가품질검사','영양성분','HACCP 유효성','소비기한 설정','미생물 검사','이화학 검사','알레르기','할랄·비건','대기측정 대행','그 외 참고검사','기타'];
+function catOptions(sel){
+  return CATS.map(function(c){return '<option'+(c===sel?' selected':'')+'>'+c+'</option>';}).join('');
+}
+var cardUid=0;
+function addProductRow(listId,data){
+  listId=(typeof listId==='string')?listId:'productList';
+  var list=document.getElementById(listId);
+  data=data||{};
+  var uid=++cardUid;
+  var div=document.createElement('div');
+  div.className='product-row';
+  div.innerHTML=
+    '<div class="prow-head"><span class="prow-no"></span>'+
+    '<button type="button" class="prod-del" title="삭제" onclick="removeProductRow(this)">×</button></div>'+
+    '<div class="prow-grid">'+
+      '<div><div class="prow-lbl">검사구분</div><select class="form-control prod-cat" onchange="cardModeChanged(this)">'+catOptions(data.cat)+'</select></div>'+
+      '<div><div class="prow-lbl">제품명</div><input type="text" class="form-control prod-name" placeholder="예) ○○쿠키"></div>'+
+      '<div><div class="prow-lbl">수량</div><input type="text" class="form-control prod-qty" placeholder="수량" value="'+(data.qty||'1')+'"></div>'+
+    '</div>'+
+    '<div class="prow-items prod-items-wrap"><div class="prow-lbl">검사항목 <span style="font-weight:400;color:#aab;">(아는 경우 쉼표로 구분 · 모르면 비워두세요 — 금액은 관리자 확인 후 안내)</span></div><input type="text" class="form-control prod-items" placeholder="예) 9대 영양성분, 대장균"></div>'+
+    '<div class="card-fee" style="display:none;">'+
+      '<div class="prow-lbl">식품 유형 <span style="font-weight:400;color:#aab;">(유형명 입력·검색 — 시험분야: 식품)</span></div>'+
+      '<input type="text" class="form-control prod-type" list="feeTypeList" placeholder="예) 과자" autocomplete="off" oninput="cardTypeChanged(this)" onchange="cardTypeChanged(this)">'+
+      '<div class="field-hint fee-hint">유형을 선택하면 검사항목·단가가 표시되고 금액이 자동 계산됩니다.</div>'+
+      '<div class="fee-list fee-base"></div>'+
+      '<div class="fee-condwrap" style="display:none;">'+
+        '<details class="fee-cond-details"><summary>추가 조건 — 분말·영유아·고령자·장기보존 제품이면 열어서 체크 (별표2·3·4)</summary>'+
+          '<label class="fee-cond-row"><input type="checkbox" class="cond-powder" onchange="cardCondsChanged(this)"> 분말·가루·환 제품 (원료를 금속 분쇄기로 분쇄) → 금속성이물 추가</label>'+
+          '<div class="fee-cond-group">특수 섭취대상 표시 (별표3)</div>'+
+          '<label class="fee-cond-row"><input type="checkbox" class="cond-special" value="영유아" onchange="cardCondsChanged(this)"> 영·유아 대상 표시</label>'+
+          '<label class="fee-cond-row"><input type="checkbox" class="cond-special" value="고령자" onchange="cardCondsChanged(this)"> 고령자 대상 표시</label>'+
+          '<div class="fee-cond-group">장기보존식품 (별표4)</div>'+
+          '<label class="fee-cond-row"><input type="radio" name="ls_'+uid+'" class="cond-ls" value="" checked onchange="cardCondsChanged(this)"> 해당없음</label>'+
+          '<label class="fee-cond-row"><input type="radio" name="ls_'+uid+'" class="cond-ls" value="통병조림" onchange="cardCondsChanged(this)"> 통·병조림</label>'+
+          '<label class="fee-cond-row"><input type="radio" name="ls_'+uid+'" class="cond-ls" value="레토르트" onchange="cardCondsChanged(this)"> 레토르트식품</label>'+
+          '<label class="fee-cond-row"><input type="radio" name="ls_'+uid+'" class="cond-ls" value="냉동_그대로" onchange="cardCondsChanged(this)"> 냉동식품(그대로 섭취)</label>'+
+          '<label class="fee-cond-row"><input type="radio" name="ls_'+uid+'" class="cond-ls" value="냉동_가열" onchange="cardCondsChanged(this)"> 냉동식품(가열 섭취)</label>'+
+        '</details>'+
+        '<div class="fee-list fee-add"></div>'+
+      '</div>'+
+      '<div class="fee-cardsum" style="display:none;">이 제품 예상 공급가액 <b class="card-supply-txt">0</b> 원 <span style="color:#999;">(부가세 별도)</span></div>'+
+    '</div>';
+  list.appendChild(div);
+  if(data.name)div.querySelector('.prod-name').value=data.name;
+  if(typeof data.items==='string'&&data.items)div.querySelector('.prod-items').value=data.items;
+  renumber(list);
+  cardModeChanged(div.querySelector('.prod-cat'));
+  if(data.type||data.sel||data.conds)applyCardData(div,data);
+}
+function removeProductRow(btn){
+  var list=btn.closest('.product-list');
+  var wasOnly=list.querySelectorAll('.product-row').length<=1;
+  btn.closest('.product-row').remove();
+  if(wasOnly)addProductRow(list.id);
+  renumber(list);
+  recalcGrand();
+}
+function renumber(list){
+  list.querySelectorAll('.prow-no').forEach(function(el,i){el.textContent='제품 '+(i+1);});
+}
+function collectProducts(listId){
+  var arr=[];
+  document.querySelectorAll('#'+listId+' .product-row').forEach(function(r){
+    var cat=r.querySelector('.prod-cat').value;
+    var self=(cat==='자가품질검사');
+    var tp=r.querySelector('.prod-type');
+    var type=(self&&tp)?tp.value.trim():'';
+    var validType=!!(self&&FEES&&type&&FEES.types[type]);
+    var name=r.querySelector('.prod-name').value.trim();
+    if(!name&&validType)name=type;
+    var sel=[];
+    if(validType)r.querySelectorAll('.fee-chk:checked').forEach(function(cb){
+      sel.push({name:cb.getAttribute('data-name'),price:parseInt(cb.getAttribute('data-price'),10)||0});
+    });
+    var itemsText=r.querySelector('.prod-items').value.trim();
+    var items=validType?sel.map(function(s){return s.name;}).join(', '):itemsText;
+    if(!name&&!items)return;
+    var p={cat:cat,name:name||'(제품명 미기재)',items:items,qty:r.querySelector('.prod-qty').value.trim()||'1'};
+    if(self){p.type=type;p.sel=sel;p.conds=cardConds(r);p.supply=parseInt(r.dataset.supply||'0',10)||0;}
+    arr.push(p);
+  });
+  return arr;
+}
+function productsToText(arr){
+  return arr.map(function(p,i){
+    var l=(i+1)+') ['+p.cat+'] '+p.name+(p.type&&p.type!==p.name?' ('+p.type+')':'')+' / 항목: '+(p.items||'미기재')+' / 수량: '+p.qty;
+    if(p.cat==='자가품질검사'&&p.supply>0)l+=' / 예상 공급가액: '+feeFmt(p.supply)+'원';
+    return l;
+  }).join('\n');
+}
+function initProducts(){
+  var list=document.getElementById('productList');
+  if(list){list.innerHTML='';addProductRow('productList');}
+}
+
+/* ===================== 자가품질검사 유형별 수수료 (files/fees.json) ===================== */
+/* 「식품등의 자가품질검사」 유형별 검사항목·단가(공급가액)를 fees.json에서 로드하여
+   유형 선택 → 항목·단가 표시 → 선택 항목 자동 합산(부가세 10% 별도 표기). */
+var FEES=null;            // 로드된 단가 데이터
+var VAT_RATE=0.1;         // 부가세율 (fees.json meta.vatRate로 덮어씀)
+
+function feeFmt(n){return (n||0).toLocaleString('ko-KR');}
+function feeEsc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function feeEscAttr(s){return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function feeHasCond(name){return /[\(\[]/.test(name);}   // 항목명에 단서(조건) 괄호 포함 여부
+
+/* fees.json 로드 */
+var FEES_ERR=false;
+function loadFees(){
+  fetch('files/fees.json',{cache:'no-store'})
+    .then(function(r){if(!r.ok)throw new Error(r.status);return r.json();})
+    .then(function(d){
+      FEES=d;
+      if(d.meta&&typeof d.meta.vatRate==='number')VAT_RATE=d.meta.vatRate;
+      populateFeeTypes();
+    })
+    .catch(function(){
+      FEES_ERR=true;
+      document.querySelectorAll('.fee-hint').forEach(function(h){
+        h.innerHTML='<span style="color:#c0392b;">단가표를 불러오지 못했습니다. 검사항목은 아래 검사항목 칸에 직접 적어 주세요. 금액은 접수 후 안내드립니다.</span>';
+      });
+    });
+}
+function populateFeeTypes(){
+  var dl=document.getElementById('feeTypeList');if(!dl||!FEES)return;
+  var list=FEES.typeList||[];
+  dl.innerHTML=list.map(function(t){return '<option value="'+feeEscAttr(t)+'"></option>';}).join('');
+  // 데이터 로드 전에 만들어진 카드(조회·수정 포함) 다시 렌더
+  document.querySelectorAll('.product-row').forEach(function(card){
+    if(card._pending){var d=card._pending;applyCardData(card,d);}
+    else if(card.querySelector('.prod-type')&&card.querySelector('.prod-type').value.trim())renderCardType(card);
+  });
+}
+
+/* 항목 한 줄 (base=유형 기본항목 / add=별표2·3·4 추가항목) */
+function feeItemRow(it,group){
+  if(it.price===null||typeof it.price!=='number'){
+    return '<label class="fee-row disabled"><span class="fee-name">'+feeEsc(it.name)+
+      ' <span class="fee-badge warn">'+feeEsc(it.note||'분석불가')+'(문의)</span></span>'+
+      '<span class="fee-price">별도문의</span></label>';
+  }
+  var cond=(group==='base')&&feeHasCond(it.name);
+  var checked=(group==='add'||(group==='base'&&!cond))?' checked':'';
+  return '<label class="fee-row"><input type="checkbox" class="fee-chk" data-price="'+it.price+
+    '" data-name="'+feeEscAttr(it.name)+'" onchange="feeChkChanged(this)"'+checked+'>'+
+    '<span class="fee-name">'+feeEsc(it.name)+(cond?' <span class="fee-badge">조건</span>':'')+'</span>'+
+    '<span class="fee-price">'+feeFmt(it.price)+'원</span></label>';
+}
+
+/* ---------- 카드 단위 UI 로직 ---------- */
+function cardModeChanged(el){
+  var card=el.closest('.product-row');
+  var self=(card.querySelector('.prod-cat').value==='자가품질검사');
+  card.querySelector('.card-fee').style.display=self?'block':'none';
+  updateItemsVisibility(card);
+  if(self){renderCardType(card);}
+  else{card.dataset.supply='0';recalcGrand();}
+}
+/* 자가품질 + 유형 선택 완료 시 자유 텍스트 검사항목 칸 숨김 (직접 입력값이 있으면 유지) */
+function updateItemsVisibility(card){
+  var self=(card.querySelector('.prod-cat').value==='자가품질검사');
+  var tp=card.querySelector('.prod-type');
+  var hasType=!!(self&&FEES&&tp&&FEES.types[tp.value.trim()]);
+  var txt=card.querySelector('.prod-items');
+  card.querySelector('.prod-items-wrap').style.display=(hasType&&!txt.value.trim())?'none':'block';
+}
+function cardTypeChanged(inp){renderCardType(inp.closest('.product-row'));}
+function renderCardType(card){
+  var tp=card.querySelector('.prod-type');
+  var t=tp?tp.value.trim():'';
+  var base=card.querySelector('.fee-base');
+  var condwrap=card.querySelector('.fee-condwrap');
+  var valid=!!(FEES&&t&&FEES.types[t]);
+  if(!valid){
+    base.innerHTML='';condwrap.style.display='none';
+    card.querySelector('.fee-add').innerHTML='';
+    card.dataset.supply='0';
+    card.querySelector('.fee-cardsum').style.display='none';
+    updateItemsVisibility(card);recalcGrand();return;
+  }
+  var td=FEES.types[t];
+  if(td.note||!td.items||!td.items.length){
+    base.innerHTML='<div class="fee-emptynote">이 유형은 고시상 <b>지정된 자가품질 검사항목이 없습니다</b>. 검사항목·금액은 접수 후 담당자가 개별 안내드립니다.</div>';
+  }else{
+    base.innerHTML=td.items.map(function(it){return feeItemRow(it,'base');}).join('');
+  }
+  condwrap.style.display='block';
+  updateItemsVisibility(card);
+  renderCardConds(card);
+}
+/* 카드의 추가조건(별표2·3·4) 읽기 */
+function cardConds(card){
+  var pw=card.querySelector('.cond-powder');
+  return {
+    powder:!!(pw&&pw.checked),
+    special:Array.prototype.map.call(card.querySelectorAll('.cond-special:checked'),function(c){return c.value;}),
+    longStore:(card.querySelector('.cond-ls:checked')||{value:''}).value||''
+  };
+}
+function cardCondsChanged(el){renderCardConds(el.closest('.product-row'));}
+function renderCardConds(card){
+  var wrap=card.querySelector('.fee-add');
+  if(!wrap||!FEES){recalcCard(card);return;}
+  var c=cardConds(card);
+  var add=FEES.additional||[];var html='';
+  function grp(title,rows){
+    if(!rows.length)return;
+    html+='<div class="fee-subhead">'+feeEsc(title)+'</div>';
+    html+=rows.map(function(a){return feeItemRow({name:a.name,price:a.price},'add');}).join('');
+  }
+  if(c.powder)grp('별표2 · 분말/가루/환 (금속 분쇄)',add.filter(function(a){return a.byeol==='별표2';}));
+  if(c.special.indexOf('영유아')>-1)grp('별표3 · 영·유아 대상',add.filter(function(a){return a.target.indexOf('영·유아')>-1;}));
+  if(c.special.indexOf('고령자')>-1)grp('별표3 · 고령자 대상',add.filter(function(a){return a.target.indexOf('고령자')>-1;}));
+  var map={'통병조림':'통·병조림','레토르트':'레토르트식품','냉동_그대로':'냉동식품(가열하지 않고 섭취)','냉동_가열':'냉동식품(가열하여 섭취)'};
+  if(map[c.longStore])grp('별표4 · '+map[c.longStore],add.filter(function(a){return a.target===map[c.longStore];}));
+  wrap.innerHTML=html;
+  recalcCard(card);
+}
+/* 합계 (체크된 숫자 단가만, 분석불가 제외) */
+function feeChkChanged(cb){recalcCard(cb.closest('.product-row'));}
+function recalcCard(card){
+  var supply=0;
+  card.querySelectorAll('.fee-chk:checked').forEach(function(cb){
+    supply+=parseInt(cb.getAttribute('data-price'),10)||0;
+  });
+  card.dataset.supply=String(supply);
+  var sumEl=card.querySelector('.fee-cardsum');
+  if(sumEl){
+    card.querySelector('.card-supply-txt').textContent=feeFmt(supply);
+    sumEl.style.display=supply>0?'block':'none';
+  }
+  recalcGrand();
+}
+function grandTotals(){
+  var supply=0;
+  document.querySelectorAll('#productList .product-row').forEach(function(r){
+    if(r.querySelector('.prod-cat').value==='자가품질검사')supply+=parseInt(r.dataset.supply||'0',10)||0;
+  });
+  var vat=Math.round(supply*VAT_RATE);
+  return {supply:supply,vat:vat,total:supply+vat};
+}
+function recalcGrand(){
+  var box=document.getElementById('grandTotalBox');if(!box)return;
+  var t=grandTotals();
+  document.getElementById('gtSupply').textContent=feeFmt(t.supply);
+  document.getElementById('gtVat').textContent=feeFmt(t.vat);
+  document.getElementById('gtTotal').textContent=feeFmt(t.total);
+  box.style.display=t.supply>0?'block':'none';
+}
+/* 저장된 데이터로 카드 복원 (조회·수정) */
+function applyCardData(card,data){
+  if(!FEES){card._pending=data;return;}
+  card._pending=null;
+  var tp=card.querySelector('.prod-type');
+  if(tp&&data.type)tp.value=data.type;
+  if(data.conds){
+    var pw=card.querySelector('.cond-powder');if(pw)pw.checked=!!data.conds.powder;
+    card.querySelectorAll('.cond-special').forEach(function(cb){cb.checked=(data.conds.special||[]).indexOf(cb.value)>-1;});
+    card.querySelectorAll('.cond-ls').forEach(function(r){r.checked=(r.value===(data.conds.longStore||''));});
+    var det=card.querySelector('.fee-cond-details');
+    if(det&&(data.conds.powder||(data.conds.special||[]).length||data.conds.longStore))det.open=true;
+  }
+  renderCardType(card);
+  if(data.sel&&data.sel.length){
+    var names={};
+    data.sel.forEach(function(s){names[(typeof s==='string')?s:s.name]=1;});
+    card.querySelectorAll('.fee-chk').forEach(function(cb){cb.checked=!!names[cb.getAttribute('data-name')];});
+    recalcCard(card);
+  }
+}
+
+/* ===================== 신청 데이터 수집 ===================== */
+function collectPayload(){
+  var products=collectProducts('productList');
+  // 자가품질 카드들의 유형·조건 요약 (이메일/시트 표시용)
+  var types=[],specials=[],longs=[],powder=false;
+  products.forEach(function(p){
+    if(p.cat!=='자가품질검사')return;
+    if(p.type&&types.indexOf(p.type)<0)types.push(p.type);
+    if(p.conds){
+      if(p.conds.powder)powder=true;
+      (p.conds.special||[]).forEach(function(s){if(specials.indexOf(s)<0)specials.push(s);});
+      if(p.conds.longStore&&longs.indexOf(p.conds.longStore)<0)longs.push(p.conds.longStore);
+    }
+  });
+  return {
+    action:'create',
+    license:radioVal('license'),
+    company:document.getElementById('company').value.trim(),
+    name:document.getElementById('name').value.trim(),
+    phone:document.getElementById('phone').value.trim(),
+    email:document.getElementById('email').value.trim(),
+    products:products,
+    productsText:productsToText(products),
+    foodType:types.join(', '),
+    powder:powder?'예':'',
+    special:specials.join(', '),
+    longStore:longs.join(', '),
+    extraItems:'',
+    estimate:grandTotals(),
+    urgent:getUrgent(),
+    message:document.getElementById('message').value.trim(),
+    password:document.getElementById('password').value
+  };
+}
+
+/* ===================== 신청 제출 ===================== */
 function submitForm(e){
   e.preventDefault();
-  const required=['company','name','phone','email'];
-  let valid=true;
-  required.forEach(function(id){
-    const el=document.getElementById(id);
-    if(!el.value.trim()){el.style.borderColor='#E53935';valid=false;}
+  var required=[['company','업체/기관명'],['name','담당자명'],['phone','연락처'],['email','이메일']];
+  var valid=true,firstBad=null;
+  required.forEach(function(f){
+    var el=document.getElementById(f[0]);
+    if(!el.value.trim()){el.style.borderColor='#E53935';valid=false;if(!firstBad)firstBad=el;}
     else el.style.borderColor='';
   });
-  const checked=document.querySelectorAll('#testFieldGrid input:checked');
-  if(checked.length===0){alert('검사 분야를 하나 이상 선택해 주세요.');valid=false;}
-  if(!valid){alert('필수 항목을 모두 입력해 주세요.');return;}
-  document.getElementById('quoteForm').style.display='none';
-  document.getElementById('successBox').style.display='block';
+  if(!radioVal('license')){alert('허가 종류를 선택해 주세요.');return;}
+  if(!valid){alert('필수 항목을 모두 입력해 주세요.');if(firstBad)firstBad.focus();return;}
+  if(collectProducts('productList').length===0){alert('검사 제품을 최소 1개 이상 입력해 주세요.\n(제품명을 적거나 자가품질검사 유형을 선택해 주세요)');return;}
+  var pw=document.getElementById('password').value,pw2=document.getElementById('password2').value;
+  if(pw.length<4){alert('비밀번호는 4자 이상 입력해 주세요.');return;}
+  if(pw!==pw2){alert('비밀번호가 일치하지 않습니다.');return;}
+  if(!document.getElementById('agree').checked){alert('개인정보 수집·이용에 동의해 주세요.');return;}
+
+  var btn=document.getElementById('submitBtn');
+  btn.disabled=true;btn.style.opacity='0.6';
+  var original=btn.innerHTML;btn.innerHTML='접수 중...';
+
+  postData(collectPayload()).then(function(res){
+    if(res&&res.ok){
+      document.getElementById('receiptCode').textContent=res.code;
+      document.getElementById('quoteForm').style.display='none';
+      document.getElementById('successBox').style.display='block';
+      window.scrollTo({top:document.getElementById('quote-form').offsetTop-120,behavior:'smooth'});
+    }else{
+      alert('접수 중 오류가 발생했습니다.'+(res&&res.error?'\n('+res.error+')':'')+'\n전화(031-429-0620)로 문의해 주세요.');
+      btn.disabled=false;btn.style.opacity='';btn.innerHTML=original;
+    }
+  }).catch(function(err){
+    alert('서버 연결에 실패했습니다. 잠시 후 다시 시도하거나 전화(031-429-0620)로 문의해 주세요.');
+    btn.disabled=false;btn.style.opacity='';btn.innerHTML=original;
+  });
+}
+
+function resetForm(){
+  document.getElementById('quoteForm').reset();
+  document.querySelectorAll('.radio-label.selected,.check-label.selected').forEach(function(el){el.classList.remove('selected');});
+  document.querySelectorAll('.urgent-btn').forEach(function(b){b.classList.remove('selected','normal');});
+  var nb=document.querySelectorAll('.urgent-btn')[0];if(nb)nb.classList.add('selected','normal');
+  initProducts();
+  recalcGrand();
+  document.getElementById('successBox').style.display='none';
+  document.getElementById('quoteForm').style.display='block';
   window.scrollTo({top:document.getElementById('quote-form').offsetTop-120,behavior:'smooth'});
+}
+
+/* ===================== 통신 (Apps Script) ===================== */
+function postData(payload){
+  if(!SCRIPT_URL){
+    return Promise.resolve({ok:false,error:'서버 주소(SCRIPT_URL)가 아직 설정되지 않았습니다. 관리자에게 문의하세요.'});
+  }
+  return fetch(SCRIPT_URL,{
+    method:'POST',
+    headers:{'Content-Type':'text/plain;charset=utf-8'},
+    body:JSON.stringify(payload)
+  }).then(function(r){return r.json();});
+}
+
+/* ===================== 조회 ===================== */
+var currentCode='';
+function lookupQuote(){
+  var code=document.getElementById('lkCode').value.trim();
+  var pw=document.getElementById('lkPw').value;
+  var msg=document.getElementById('lookupMsg');
+  msg.className='lookup-msg';
+  if(!code||!pw){msg.className='lookup-msg err';msg.textContent='접수번호와 비밀번호를 입력해 주세요.';return;}
+  msg.className='lookup-msg ok';msg.textContent='조회 중...';
+  postData({action:'lookup',code:code,password:pw}).then(function(res){
+    if(res&&res.ok){
+      currentCode=code;
+      fillRecord(res.record);
+      msg.className='lookup-msg';msg.textContent='';
+      document.getElementById('recordView').classList.add('show');
+    }else{
+      document.getElementById('recordView').classList.remove('show');
+      msg.className='lookup-msg err';
+      msg.textContent=(res&&res.error)?res.error:'접수번호 또는 비밀번호가 올바르지 않습니다.';
+    }
+  }).catch(function(){msg.className='lookup-msg err';msg.textContent='서버 연결에 실패했습니다. 잠시 후 다시 시도해 주세요.';});
+}
+function fillRecord(r){
+  document.getElementById('rvCode').textContent=r.code||currentCode;
+  document.getElementById('rvDate').textContent=r.date||'-';
+  var st=document.getElementById('rvStatus');
+  st.textContent=r.status||'접수';st.className='status-badge status-'+(r.status||'접수');
+  document.getElementById('e_company').value=r.company||'';
+  document.getElementById('e_name').value=r.name||'';
+  document.getElementById('e_phone').value=r.phone||'';
+  document.getElementById('e_email').value=r.email||'';
+  document.getElementById('e_message').value=r.message||'';
+  var list=document.getElementById('e_productList');
+  list.innerHTML='';
+  var prods=r.products;
+  if(typeof prods==='string'){try{prods=JSON.parse(prods);}catch(e){prods=[];}}
+  if(!prods||!prods.length){addProductRow('e_productList');}
+  else prods.forEach(function(p){addProductRow('e_productList',p);});
+}
+function closeRecord(){
+  document.getElementById('recordView').classList.remove('show');
+  document.getElementById('lkPw').value='';
+}
+function updateQuote(e){
+  e.preventDefault();
+  var msg=document.getElementById('lookupMsg');
+  var products=collectProducts('e_productList');
+  var payload={
+    action:'update',
+    code:currentCode,
+    password:document.getElementById('lkPw').value,
+    company:document.getElementById('e_company').value.trim(),
+    name:document.getElementById('e_name').value.trim(),
+    phone:document.getElementById('e_phone').value.trim(),
+    email:document.getElementById('e_email').value.trim(),
+    products:products,
+    productsText:productsToText(products),
+    message:document.getElementById('e_message').value.trim()
+  };
+  msg.className='lookup-msg ok';msg.textContent='저장 중...';
+  postData(payload).then(function(res){
+    if(res&&res.ok){msg.className='lookup-msg ok';msg.textContent='수정 내용이 저장되었습니다. 담당자에게도 자동 통보됩니다.';}
+    else{msg.className='lookup-msg err';msg.textContent=(res&&res.error)?res.error:'저장에 실패했습니다.';}
+  }).catch(function(){msg.className='lookup-msg err';msg.textContent='서버 연결에 실패했습니다.';});
 }
 </script>
 </body>

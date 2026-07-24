@@ -437,31 +437,31 @@ footer { background: var(--footer-bg); color: rgba(255,255,255,0.65); padding: 5
 .hs-1 {
   background:
     linear-gradient(105deg,
-      rgba(5,20,70,0.95)  0%,
-      rgba(8,45,130,0.88) 38%,
-      rgba(5,55,140,0.48) 62%,
-      rgba(0,15,60,0.04)  100%),
+      rgba(3,12,50,0.96)  0%,
+      rgba(6,30,95,0.9)   38%,
+      rgba(5,45,120,0.5)  62%,
+      rgba(0,10,45,0.05)  100%),
     url('images/main_3.jpg') center 40%/cover no-repeat;
 }
-/* 슬라이드 2: 연구원+비커 — KOLAS 공인 분석 */
+/* 슬라이드 2: 연구원+비커 — KOLAS 공인 분석 (밝은 코발트·하늘빛) */
 .hs-2 {
   background:
     linear-gradient(105deg,
-      rgba(0,40,100,0.95)  0%,
-      rgba(2,80,170,0.87)  38%,
-      rgba(2,110,190,0.46) 62%,
-      rgba(0,30,90,0.04)   100%),
+      rgba(12,75,170,0.93)  0%,
+      rgba(30,115,215,0.85) 38%,
+      rgba(70,160,235,0.44) 62%,
+      rgba(10,60,140,0.04)  100%),
     url('images/main_4.jpg') center 35%/cover no-repeat;
 }
-/* 슬라이드 3: 페트리디쉬 미생물 배양 — 대기측정 대행 */
+/* 슬라이드 3: 대기시료 채취기(하이볼륨 샘플러) — 대기측정 대행 (청록 톤) */
 .hs-3 {
   background:
     linear-gradient(105deg,
-      rgba(5,20,80,0.95)   0%,
-      rgba(10,50,130,0.87) 38%,
-      rgba(8,65,150,0.46)  62%,
-      rgba(0,20,70,0.04)   100%),
-    url('images/main_5.jpg') center 35%/cover no-repeat;
+      rgba(3,45,58,0.95)    0%,
+      rgba(8,95,108,0.87)   38%,
+      rgba(14,130,132,0.46) 62%,
+      rgba(0,38,50,0.04)    100%),
+    url('images/main_6.jpg') right center/auto 100% no-repeat #c9d2d3;
 }
 .hero-bg { display: none; }
 .hero-deco { display: none; }
@@ -570,32 +570,6 @@ footer { background: var(--footer-bg); color: rgba(255,255,255,0.65); padding: 5
 .svc-card.cat-air      { --c:#5d76a8; --c-bg:#E2E8F0; } /* 대기측정 — 슬레이트 */
 .svc-name { font-size: 14px; font-weight: 700; line-height: 1.4; }
 .svc-badge { font-size: 12px; opacity: 0.75; margin-top: 4px; }
-
-/* ===== 고정 견적상담 버튼 (헤더 아래 리본) ===== */
-.cta-ribbon {
-  position: fixed; bottom: 0; left: 0; right: 0; z-index: 600;
-  background: linear-gradient(90deg, var(--primary-dark) 0%, var(--primary-light) 100%);
-  padding: 12px 24px;
-  display: flex; align-items: center; justify-content: center; gap: 20px;
-  box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
-}
-.cta-ribbon-text { color: #fff; font-size: 15px; font-weight: 600; }
-.cta-ribbon-text span { opacity: 0.8; font-weight: 400; margin-left: 8px; font-size: 14px; }
-.cta-ribbon-btns { display: flex; gap: 10px; }
-.cta-ribbon-btn {
-  padding: 9px 24px; border-radius: 50px; font-size: 14px; font-weight: 700;
-  text-decoration: none; transition: all 0.2s; white-space: nowrap;
-}
-.cta-ribbon-btn.solid { background: var(--accent-orange); color: #fff; }
-.cta-ribbon-btn.solid:hover { background: var(--accent-orange-dark); box-shadow: 0 4px 12px rgba(0,0,0,0.25); }
-.cta-ribbon-btn.outline { border: 2px solid rgba(255,255,255,0.7); color: #fff; }
-.cta-ribbon-btn.outline:hover { background: rgba(255,255,255,0.12); border-color: #fff; }
-.cta-ribbon-close {
-  position: absolute; right: 20px; background: none; border: none;
-  color: rgba(255,255,255,0.6); font-size: 20px; cursor: pointer; line-height: 1;
-  padding: 4px 8px; transition: color 0.2s;
-}
-.cta-ribbon-close:hover { color: #fff; }
 
 /* ===== MAIN: 공지사항 섹션 ===== */
 .info-section { background: linear-gradient(180deg, #FFFFFF 0%, #F5F8FF 100%); padding: 70px 24px; }
@@ -719,9 +693,6 @@ footer { background: var(--footer-bg); color: rgba(255,255,255,0.65); padding: 5
   .content-wrap { padding: 40px 16px; }
   .logo-svg { height: 40px; }
   .logo-kolas { height: 38px; }
-  .cta-ribbon { flex-wrap: wrap; gap: 10px; padding: 10px 16px; }
-  .cta-ribbon-text span { display: none; }
-  .cta-ribbon-close { position: static; margin-left: 4px; }
   body { padding-bottom: 80px; }
 }
 
@@ -894,7 +865,6 @@ footer {
 
 /* 인쇄 시 CTA 리본 숨김 */
 @media print {
-  .cta-ribbon { display: none !important; }
 }
 
 /* ===== 신뢰 수치 배너 ===== */
@@ -1441,19 +1411,6 @@ footer {
   </div>
 </section>
 
-<!-- ===== 하단 고정 CTA 리본 ===== -->
-<div class="cta-ribbon" id="ctaRibbon">
-  <div class="cta-ribbon-text">
-    📞 검사 의뢰 및 상담 문의
-    <span>031-429-0620 &nbsp;|&nbsp; 070-8831-7376</span>
-  </div>
-  <div class="cta-ribbon-btns">
-    <a href="quote/estimate.html" class="cta-ribbon-btn solid">실시간 견적 요청</a>
-    <a href="quote/consult.html" class="cta-ribbon-btn outline">상담 신청</a>
-  </div>
-  <button class="cta-ribbon-close" onclick="document.getElementById('ctaRibbon').style.display='none'" aria-label="닫기">✕</button>
-</div>
-
 <!-- ===== FOOTER ===== -->
 <footer>
   <div class="footer-inner">
@@ -1497,7 +1454,7 @@ footer {
           <div class="fi"><span>사업자등록번호</span> 350-88-01260</div>
           <div class="fi"><span>주소</span> 경기도 의왕시 한밭들길 12 (우편번호 16073)</div>
           <div class="fi"><span>대표전화</span> 031-429-0620</div>
-          <div class="fi"><span>상담문의</span> 070-8831-7376, 7366</div>
+          <div class="fi"><span>상담문의</span> 070-8831-7376</div>
           <div class="fi"><span>팩스</span> 031-427-0625</div>
           <div class="fi"><span>이메일</span> <a href="mailto:isalab@naver.com" style="color:inherit">isalab@naver.com</a></div>
           <div class="fi"><span>운영시간</span> 평일 09:00~18:00 / 점심 12:00~13:00 (주말·공휴일 휴무)</div>
