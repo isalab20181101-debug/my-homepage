@@ -409,6 +409,9 @@ select.form-control{appearance:none;background-image:url("data:image/svg+xml,%3C
           .fee-row .fee-price{flex:0 0 auto;font-size:13.5px;font-weight:700;color:var(--primary);white-space:nowrap;}
           .fee-row.disabled{cursor:default;background:#faf7f2;}
           .fee-row.disabled .fee-price{color:#B36A00;}
+          .fee-row.dup{background:#f7f7f9;}
+          .fee-row.dup .fee-price{text-decoration:line-through;color:#aaa;}
+          .fee-badge.dupbadge{background:#ececf0;color:#888;}
           .fee-badge{display:inline-block;font-size:11px;font-weight:600;padding:1px 7px;border-radius:10px;background:#eef2fb;color:#3a5bbf;margin-left:4px;vertical-align:middle;}
           .fee-badge.warn{background:#fff2df;color:#B36A00;}
           .fee-emptynote{padding:14px;font-size:13px;color:#B36A00;background:#faf7f2;border-radius:10px;line-height:1.6;margin-top:6px;}
@@ -730,8 +733,11 @@ function collectProducts(listId){
     var validType=!!(self&&FEES&&type&&FEES.types[type]);
     var name=r.querySelector('.prod-name').value.trim();
     if(!name&&validType)name=type;
-    var sel=[];
+    var sel=[],seenSel={};
     if(validType)r.querySelectorAll('.fee-chk:checked').forEach(function(cb){
+      var key=feeNormName(cb.getAttribute('data-name'));
+      if(seenSel[key])return;   // 별표1과 별표2·3·4 동일항목은 1회만
+      seenSel[key]=1;
       sel.push({name:cb.getAttribute('data-name'),price:parseInt(cb.getAttribute('data-price'),10)||0});
     });
     var itemsText=r.querySelector('.prod-items').value.trim();
@@ -765,6 +771,7 @@ function feeFmt(n){return (n||0).toLocaleString('ko-KR');}
 function feeEsc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function feeEscAttr(s){return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function feeHasCond(name){return /[\(\[]/.test(name);}   // 항목명에 단서(조건) 괄호 포함 여부
+function feeNormName(name){return String(name).replace(/[\(\[].*$/,'').replace(/\s+/g,'').trim();}  // 괄호 앞 검사항목명(중복 판정용)
 
 /* fees.json 로드 */
 var FEES_ERR=false;
@@ -878,11 +885,23 @@ function renderCardConds(card){
   wrap.innerHTML=html;
   recalcCard(card);
 }
-/* 합계 (체크된 숫자 단가만, 분석불가 제외) */
+/* 합계 (체크된 숫자 단가만 · 분석불가 제외 · 별표1과 별표2·3·4 동일항목은 1회만) */
 function feeChkChanged(cb){recalcCard(cb.closest('.product-row'));}
 function recalcCard(card){
-  var supply=0;
+  // 중복 표시 초기화
+  card.querySelectorAll('.fee-row.dup').forEach(function(r){r.classList.remove('dup');});
+  card.querySelectorAll('.dupbadge').forEach(function(b){b.remove();});
+  var supply=0,seen={};
+  // DOM 순서상 별표1(fee-base) 항목이 먼저 → 별표1을 남기고 뒤의 중복을 제외
   card.querySelectorAll('.fee-chk:checked').forEach(function(cb){
+    var key=feeNormName(cb.getAttribute('data-name'));
+    if(seen[key]){
+      var row=cb.closest('.fee-row');row.classList.add('dup');
+      var nm=row.querySelector('.fee-name');
+      if(nm){var s=document.createElement('span');s.className='fee-badge dupbadge';s.textContent='중복 · 합계 제외';nm.appendChild(document.createTextNode(' '));nm.appendChild(s);}
+      return;
+    }
+    seen[key]=1;
     supply+=parseInt(cb.getAttribute('data-price'),10)||0;
   });
   card.dataset.supply=String(supply);
