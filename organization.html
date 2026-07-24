@@ -552,31 +552,6 @@ footer { background: var(--footer-bg); color: rgba(255,255,255,0.65); padding: 5
 .svc-name { font-size: 15px; font-weight: 700; line-height: 1.45; }
 .svc-badge { font-size: 12px; opacity: 0.75; margin-top: 4px; }
 
-/* ===== 고정 견적상담 버튼 (헤더 아래 리본) ===== */
-.cta-ribbon {
-  position: fixed; bottom: 0; left: 0; right: 0; z-index: 600;
-  background: linear-gradient(90deg, var(--primary-dark) 0%, var(--primary-light) 100%);
-  padding: 12px 24px;
-  display: flex; align-items: center; justify-content: center; gap: 20px;
-  box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
-}
-.cta-ribbon-text { color: #fff; font-size: 15px; font-weight: 600; }
-.cta-ribbon-text span { opacity: 0.8; font-weight: 400; margin-left: 8px; font-size: 14px; }
-.cta-ribbon-btns { display: flex; gap: 10px; }
-.cta-ribbon-btn {
-  padding: 9px 24px; border-radius: 50px; font-size: 14px; font-weight: 700;
-  text-decoration: none; transition: all 0.2s; white-space: nowrap;
-}
-.cta-ribbon-btn.solid { background: var(--accent-orange); color: #fff; }
-.cta-ribbon-btn.solid:hover { background: var(--accent-orange-dark); box-shadow: 0 4px 12px rgba(0,0,0,0.25); }
-.cta-ribbon-btn.outline { border: 2px solid rgba(255,255,255,0.7); color: #fff; }
-.cta-ribbon-btn.outline:hover { background: rgba(255,255,255,0.12); border-color: #fff; }
-.cta-ribbon-close {
-  position: absolute; right: 20px; background: none; border: none;
-  color: rgba(255,255,255,0.6); font-size: 20px; cursor: pointer; line-height: 1;
-  padding: 4px 8px; transition: color 0.2s;
-}
-.cta-ribbon-close:hover { color: #fff; }
 
 /* ===== MAIN: 공지사항 섹션 ===== */
 .info-section { background: #fff; padding: 70px 24px; }
@@ -697,9 +672,6 @@ footer { background: var(--footer-bg); color: rgba(255,255,255,0.65); padding: 5
   .content-wrap { padding: 40px 16px; }
   .logo-svg { height: 40px; }
   .logo-kolas { height: 38px; }
-  .cta-ribbon { flex-wrap: wrap; gap: 10px; padding: 10px 16px; }
-  .cta-ribbon-text span { display: none; }
-  .cta-ribbon-close { position: static; margin-left: 4px; }
   body { padding-bottom: 80px; }
 }
 
@@ -872,7 +844,6 @@ footer {
 
 /* 인쇄 시 CTA 리본 숨김 */
 @media print {
-  .cta-ribbon { display: none !important; }
 }
 
 .org-wrap { max-width: 960px; margin: 0 auto; }
